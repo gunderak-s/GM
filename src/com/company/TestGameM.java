@@ -1,9 +1,9 @@
 package com.company;
 
-public class TestGM {
+public class TestGameM {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println((char)8962+"\u001B[32m"+"\u001B[47m");
+        System.out.println("\u001B[32m"+(char)8962);
     }
 }

@@ -1,10 +1,10 @@
 package com.company;
 
-public class StreetCellsGame extends CellsGame{
+public class StreetCellGame extends CellGame {
     int priceCells;
     int statusRenta;
     int priceHouse;
     int priceHotel;
     int[] rentaMas;
-    Gamers holder;
+    Player holder;
 }
