@@ -18,7 +18,7 @@ public class CityCell extends Cell {
     public static final String CYAN_BACKGROUND = "\u001B[46m";
     public static final String WHITE_BACKGROUND = "\u001B[47m";
 
-    CityCell(int sr, int ph, int pht, int rm, Player h) {
+    CityCell(int sttRnt, int prcHus, int prcHtl, int rntMs, Player hld) {
 
     }
 
