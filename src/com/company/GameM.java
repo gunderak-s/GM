@@ -5,6 +5,9 @@ public class GameM {
     CellGame[] roadGame;
     final static int SIZE_GAME =11;
     final static char HOUSE=8962;
+    Player[] players;
+
+
 
     GameM(){
         fildGame=new CellGame[SIZE_GAME][SIZE_GAME];
@@ -21,6 +24,10 @@ public class GameM {
                 {' ', ' ', ' ', ' '},
                 {' ', ' ', ' ', ' '},
         };
+    }
+
+    void game(){
+
     }
 
     void Print(){
