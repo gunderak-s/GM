@@ -8,12 +8,13 @@ public class GameM {
     Player[] players;
 
 
+
     GameM(){
         fildGame=new CellGame[SIZE_GAME][SIZE_GAME];
-        fildGame[0][0]=new StreetCellGame();
-        fildGame[0][0].cellsMatrix= new char[][]{{' ', ' ', ' ', ' '},
+        fildGame[0][3]=new CityCellGame();
+        fildGame[0][3].cellsMatrix= new char[][]{{' ', '1', '2', '0'},
                                                  {' ', ' ', ' ', ' '},
-                                                 {' ', ' ', ' ', ' '},
+                                                 {'Л', 'Ь', 'В', 'І'},
                                                  {' ', ' ', ' ', ' '},
         };
     }
@@ -173,7 +174,7 @@ public class GameM {
         for (int rowCells = 1; rowCells < SIZE_GAME; rowCells++)
             for (int i = 1; i< CellGame.SIZE_CELLS; i++){
                 for (int j = 1; j< SIZE_GAME; j++)
-                    fildGame[rowCells][j].print();
+                    fildGame[rowCells][j].print(i);
                 System.out.println();
                 }
     }
