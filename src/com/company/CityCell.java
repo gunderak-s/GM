@@ -3,7 +3,6 @@ package com.company;
 public class CityCell extends Cell {
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     String color;
-    int priceCells;
     int statusRenta;
     int priceHouse;
     int priceHotel;
