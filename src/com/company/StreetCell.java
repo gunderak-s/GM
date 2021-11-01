@@ -1,13 +1,13 @@
 package com.company;
 
-public class StreetCellGame extends CellGame {
+public class StreetCell extends Cell {
     int priceCells;
     int statusRenta;
     int priceHouse;
     int priceHotel;
     int[] rentaMas;
     Player holder;
-    StreetCellGame(int sr, int ph, int pht,int rm, Player h) {
+    StreetCell(int sr, int ph, int pht, int rm, Player h) {
 
     }
 }

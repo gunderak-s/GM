@@ -1,6 +1,6 @@
 package com.company;
 
-public class CityCellGame extends CellGame {
+public class CityCell extends Cell {
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     String color;
     int priceCells;
@@ -18,6 +18,21 @@ public class CityCellGame extends CellGame {
     public static final String PURPLE_BACKGROUND = "\u001B[45m";
     public static final String CYAN_BACKGROUND = "\u001B[46m";
     public static final String WHITE_BACKGROUND = "\u001B[47m";
+
+    CityCell(int sr, int ph, int pht, int rm, Player h) {
+
+    }
+
+    void move(Player player){
+        if (statusRenta==0){
+
+
+
+        }
+        else {
+            player.money =player.money -rentaMas[statusRenta];
+        }
+    }
 
     void print(int row){
         switch (rotation) {

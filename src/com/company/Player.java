@@ -1,9 +1,13 @@
 package com.company;
 
 public class Player {
-    String namePlayer;
-    char symbolPlayer;
-    int moneyPlayer;
+    String name;
+    char symbol;
+    int money;
     int positionOnRoad;
+
+    void setPositionOnRoad(int cube){
+
+    }
 
 }
