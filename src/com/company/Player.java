@@ -5,4 +5,5 @@ public class Player {
     char symbolPlayer;
     int moneyPlayer;
     int positionOnRoad;
+
 }
