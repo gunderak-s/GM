@@ -7,4 +7,8 @@ public class StreetCellGame extends CellGame {
     int priceHotel;
     int[] rentaMas;
     Player holder;
+    StreetCellGame(int sr, int ph, int pht,int rm, Player h) {
+
+    }
 }
+
