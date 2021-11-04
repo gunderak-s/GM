@@ -23,7 +23,7 @@ public class GameM {
         int turn = 0;
         int cube1;
         int cube2;
-        int playerGoToBank;
+        int selectedNumber;
         int numberOnRoad =0;
         Scanner scanner=new Scanner(System.in);
         while (players.size() > 1) {
@@ -32,15 +32,17 @@ public class GameM {
             for (int i=0;i<players.size();i++)
                 System.out.print((i+1)+"- щоб"+players.get(i).name+"зайшов в банк, ");
             if (scanner.hasNextInt()) {
-                playerGoToBank=scanner.nextInt();
-                switch (playerGoToBank) {
+                selectedNumber =scanner.nextInt();
+                switch (selectedNumber) {
                     case 0:
                         break;
                     case 1, 2, 3, 4:
-                        System.out.println(players.get(playerGoToBank - 1).name + " яку клітинку хочете купити? Введіть її номер на дорозі гри");
+                        System.out.println(players.get(selectedNumber - 1).name + " яку клітинку хочете купити? Введіть її номер на дорозі гри");
                         if (scanner.hasNextInt())
                             numberOnRoad =scanner.nextInt();
-                        if (!checkShopping(numberOnRoad,players.get(playerGoToBank)))
+                        if (checkShopping(numberOnRoad,players.get(selectedNumber)))
+                            System.out.print("покупка здійснена");
+                        else
                             System.out.print("Неможлива покупка");
                         continue;
                     default:
@@ -49,13 +51,10 @@ public class GameM {
                 }
             }
             //--------------------------------------------------Хід гравця----------------------------------------------------------------------------------
-
             cube1 = (int) (Math.random() * 6) + 1;
             cube2 = (int) (Math.random() * 6) + 1;
-
             move(players.get(turn),cube1 + cube2);
-
-            //--------------------------------------------------Видалення банкротів-------------------------------------------------------------------------------
+            //--------------------------------------------------Видалення поточного гравця, якщо став банкротом---------------------------------------------
 
             //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
             turn++;
