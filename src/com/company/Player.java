@@ -5,9 +5,8 @@ public class Player {
     char symbol;
     int money;
     int positionOnRoad;
-
+    //##################################################################################################################################################
     void setPositionOnRoad(int cube){
 
     }
-
 }

@@ -8,7 +8,7 @@ public class CityCell extends Cell {
     int priceHotel;
     int[] rentaMas;
     Player holder;
-
+    //-----------------------------Константи кольорів рядків-------------------------------------------------------------------------------------------
     public static final String BLACK_BACKGROUND = "\u001B[40m";
     public static final String RED_BACKGROUND = "\u001B[41m";
     public static final String GREEN_BACKGROUND = "\u001B[42m";
@@ -17,11 +17,11 @@ public class CityCell extends Cell {
     public static final String PURPLE_BACKGROUND = "\u001B[45m";
     public static final String CYAN_BACKGROUND = "\u001B[46m";
     public static final String WHITE_BACKGROUND = "\u001B[47m";
-
+    //##################################################################################################################################################
     CityCell(int sttRnt, int prcHus, int prcHtl, int rntMs, Player hld) {
 
     }
-
+    //##################################################################################################################################################
     void move(Player player){
         if (statusRenta==0){
 
@@ -32,7 +32,7 @@ public class CityCell extends Cell {
             player.money =player.money -rentaMas[statusRenta];
         }
     }
-
+    //##################################################################################################################################################
     void print(int row){
         switch (rotation) {
             case 0:
