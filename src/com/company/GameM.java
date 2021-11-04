@@ -165,13 +165,13 @@ public class GameM {
                 {' ', 'л', ' ', '2'},
                 {' ', 'о', ' ', '0'}};
 
-        fieldGame[7][10] = new CityCell(3, CityCell.CYAN_BACKGROUND, 0, 200, 200, 350, null);
+        fieldGame[7][10] = new CityCell(3, CityCell.GRAY_BACKGROUND, 0, 200, 200, 350, null);
         fieldGame[7][10].cellsMatrix = new char[][]{{' ', 'Л', ' ', ' '},
                 {' ', 'ь', ' ', '3'},
                 {' ', 'в', ' ', '5'},
                 {' ', 'і', ' ', '0'}};
 
-        fieldGame[9][10] = new CityCell(3, CityCell.CYAN_BACKGROUND, 0, 200, 200, 400, null);
+        fieldGame[9][10] = new CityCell(3, CityCell.GRAY_BACKGROUND, 0, 200, 200, 400, null);
         fieldGame[9][10].cellsMatrix = new char[][]{{' ', 'К', ' ', ' '},
                 {' ', 'и', ' ', '4'},
                 {' ', 'ї', ' ', '0'},
@@ -234,13 +234,13 @@ public class GameM {
                 {' ', ' ', ' ', ' '},
                 {' ', '1', '0', '0'}};
 
-        fieldGame[10][7] = new CityCell(0, CityCell.YELLOW_BACKGROUND, 0, 50, 50, 60, null);
+        fieldGame[10][7] = new CityCell(0, CityCell.CYAN_BACKGROUND, 0, 50, 50, 60, null);
         fieldGame[10][7].cellsMatrix = new char[][]{{' ', ' ', ' ', ' '},
                 {'М', 'а', 'н', 'ч'},
                 {' ', ' ', ' ', ' '},
                 {' ', ' ', '6', '0'}};
 
-        fieldGame[10][9] = new CityCell(0, CityCell.YELLOW_BACKGROUND, 0, 50, 50, 60, null);
+        fieldGame[10][9] = new CityCell(0, CityCell.CYAN_BACKGROUND, 0, 50, 50, 60, null);
         fieldGame[10][9].cellsMatrix = new char[][]{{' ', ' ', ' ', ' '},
                 {'Л', 'о', 'н', 'д'},
                 {' ', ' ', ' ', ' '},

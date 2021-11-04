@@ -17,6 +17,15 @@ public class CityCell extends Cell {
     public static final String PURPLE_BACKGROUND = "\u001B[45m";
     public static final String CYAN_BACKGROUND = "\u001B[46m";
     public static final String WHITE_BACKGROUND = "\u001B[47m";
+
+    public static final String GRAY_BACKGROUND = "\u001B[100m";
+    public static final String BRIGHT_RED_BACKGROUND = "\u001B[101m";
+    public static final String BRIGHT_GREEN_BACKGROUND = "\u001B[102m";
+    public static final String BRIGHT_YELLOW_BACKGROUND = "\u001B[103m";
+    public static final String BRIGHT_BLUE_BACKGROUND = "\u001B[104m";
+    public static final String BRIGHT_PURPLE_BACKGROUND = "\u001B[105m";
+    public static final String BRIGHT_CYAN_BACKGROUND = "\u001B[106m";
+    public static final String BRIGHT_WHITE_BACKGROUND = "\u001B[107m";
     //##################################################################################################################################################
     CityCell( int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, int rMas, Player holder) {
         this.rotation=rotation;
