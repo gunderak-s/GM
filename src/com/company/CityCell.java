@@ -18,9 +18,6 @@ public class CityCell extends Cell {
     public static final String CYAN_BACKGROUND = "\u001B[46m";
     public static final String WHITE_BACKGROUND = "\u001B[47m";
     //##################################################################################################################################################
-    CityCell(int sttRnt, int prcHus, int prcHtl, int rntMs, Player hld) {
-
-
     CityCell( int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, int rMas, Player holder) {
         this.rotation=rotation;
         this.color=color;
@@ -30,7 +27,7 @@ public class CityCell extends Cell {
         this.holder=holder;
     }
     //##################################################################################################################################################
-    void move(Player player){
+    void action(Player player){
         if (statusRenta==0){
 
 
@@ -39,6 +36,10 @@ public class CityCell extends Cell {
         else {
             player.money =player.money -rentaMas[statusRenta];
         }
+    }
+    //##################################################################################################################################################
+    void redrawSymbol(char prevChar,char newChar){
+
     }
     //##################################################################################################################################################
     void print(int row){
@@ -51,10 +52,10 @@ public class CityCell extends Cell {
                     default:
                         System.out.print(WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
                 }
-
+            break;
             case 1:
                 System.out.print(WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+color+cellsMatrix[row][3]);
-
+            break;
 
             case 2:
                 switch (row) {
@@ -64,9 +65,10 @@ public class CityCell extends Cell {
                     default:
                         System.out.print(WHITE_BACKGROUND + cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
                 }
+            break;
             case 3:
                 System.out.print(color + cellsMatrix[row][0] +WHITE_BACKGROUND+ cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
-
+            break;
         }
     }
 }

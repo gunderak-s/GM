@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class GameM {
     Cell[][] fildGame;
@@ -8,7 +9,7 @@ public class GameM {
     final static int SIZE_GAME = 11;
     final static char HOUSE = 8962;
     ArrayList<Player> players;
-
+    Cell[] Italy;
     //##################################################################################################################################################
     GameM() {
 
@@ -22,13 +23,44 @@ public class GameM {
         int turn = 0;
         int cube1 = 1;
         int cube2 = 1;
+        int playerGoToBank=1;
+        int numberOnroad=0;
+        Scanner scanner=null;
+        scanner=new Scanner(System.in);
         while (players.size() > 1) {
+            //--------------------------------------------------Діалог----------------------------------------------------------------------------------
+            System.out.print("Натисніть 0, щоб"+players.get(turn).name+"кинув кубики, або ");
+            for (int i=0;i<players.size();i++)
+                System.out.print((i+1)+"- щоб"+players.get(i).name+"зайшов в банк, ");
+            if (scanner.hasNextInt()) {
+                playerGoToBank=scanner.nextInt();
+                switch (playerGoToBank) {
+                    case 0:
+                        break;
+                    case 1, 2, 3, 4:
+                        System.out.println(players.get(playerGoToBank - 1).name + " яку клітинку хочете купити? Введіть її номер на дорозі гри");
+                        if (scanner.hasNextInt())
+                            numberOnroad=scanner.nextInt();
+                        if (!checkShopping(numberOnroad,players.get(playerGoToBank))) {
+                            System.out.print("Неможлива покупка");
+                            continue;
+                        }
+                        else
+                            continue;
+                    default:
+                        System.out.print("Некоректне значення");
+                        continue;
+                }
+            }
             //--------------------------------------------------Хід гравця----------------------------------------------------------------------------------
+
             cube1 = (int) (Math.random() * 6) + 1;
             cube2 = (int) (Math.random() * 6) + 1;
 
-            players.get(turn).setPositionOnRoad(cube1 + cube2);
-            roadGame[players.get(turn).positionOnRoad].move(players.get(turn));
+            move(players.get(turn),cube1 + cube2);
+
+            //--------------------------------------------------Видалення банкротів-------------------------------------------------------------------------------
+
             //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
             turn++;
             if (turn > players.size() - 1)
@@ -37,7 +69,23 @@ public class GameM {
         //--------------------------------------------------Після циклу - оголошення переможця----------------------------------------------------------
 
     }
+    //##################################################################################################################################################
+    void move(Player player, int cube){
+        roadGame[player.positionOnRoad].redrawSymbol(player.symbol,' ');
+        for (int i = 0; i < cube; i++) {
+            if (player.positionOnRoad!=40){
+                player.positionOnRoad++;}
+            else {
+                player.positionOnRoad=0;
+            }
+        }
+        roadGame[player.positionOnRoad].action(player);
+    }
+    //##################################################################################################################################################
+    boolean checkShopping(int numberOnroad, Player player) {
 
+        return true;
+    }
     //##################################################################################################################################################
     void setPlayers() {
 
@@ -49,7 +97,7 @@ public class GameM {
             for (int i = 0; i < Cell.SIZE_CELLS; i++) {
                 for (int j = 0; j < SIZE_GAME; j++)
                     fildGame[rowCells][j].print(i);
-                System.out.println();
+                System.out.println(CityCell.BLACK_BACKGROUND);
             }
     }
 
@@ -68,7 +116,6 @@ public class GameM {
                 };
             }
         //---------------------------------------------Заповнення CityCell клітинок---------------------------------------------------------------------
-        fildGame[0][1] = new CityCell(0, 150, 150, 220, null);
         fildGame[0][1] = new CityCell(2, CityCell.RED_BACKGROUND, 0, 150, 150, 220, null);
         fildGame[0][1].cellsMatrix = new char[][]{{' ', '2', '2', '0'},
                 {' ', ' ', ' ', ' '},
@@ -203,8 +250,8 @@ public class GameM {
                 {'Л', 'о', 'н', 'д'},
                 {' ', ' ', ' ', ' '},
                 {' ', ' ', '6', '0'}};
+        Italy=new CityCell[3];
+        Italy[0]=fildGame[0][1];
     }
-
-
 }
-}
+
