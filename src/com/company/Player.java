@@ -7,6 +7,7 @@ public class Player {
     int positionOnRoad;
     {positionOnRoad=0;}
 
+    //##################################################################################################################################################
     void setPositionOnRoad(int cube){
         for (int i = 0; i < cube; i++) {
             if (positionOnRoad!=40){
@@ -16,5 +17,4 @@ public class Player {
             }
         }
     }
-
 }
