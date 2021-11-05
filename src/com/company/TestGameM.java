@@ -6,6 +6,6 @@ public class TestGameM {
 	// write your code here
         GameM g1=new GameM();
         g1.setField();
-        g1.Print();
+        g1.printField();
     }
 }

@@ -14,7 +14,6 @@ public class GameM {
     GameM() {
 
     }
-
     //##################################################################################################################################################
     void game() {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
@@ -40,7 +39,7 @@ public class GameM {
                         System.out.println(players.get(selectedNumber - 1).name + " яку клітинку хочете купити? Введіть її номер на дорозі гри");
                         if (scanner.hasNextInt())
                             numberOnRoad =scanner.nextInt();
-                        if (checkShopping(numberOnRoad,players.get(selectedNumber)))
+                        if (checkAndShopping(numberOnRoad,players.get(selectedNumber)))
                             System.out.print("покупка здійснена");
                         else
                             System.out.print("Неможлива покупка");
@@ -77,7 +76,7 @@ public class GameM {
         roadGame[player.positionOnRoad].action(player);
     }
     //##################################################################################################################################################
-    boolean checkShopping(int numberOnRoad, Player player) {
+    boolean checkAndShopping(int numberOnRoad, Player player) {
 
         return true;
     }
@@ -85,13 +84,12 @@ public class GameM {
     void setPlayers() {
 
     }
-
     //##################################################################################################################################################
-    void Print() {
+    void printField() {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)
             for (int i = 0; i < Cell.SIZE_CELLS; i++) {
                 for (int j = 0; j < SIZE_GAME; j++)
-                    fieldGame[rowCells][j].print(i);
+                    fieldGame[rowCells][j].printMatrix(i);
                 System.out.println(CityCell.BLACK_BACKGROUND);
             }
     }
