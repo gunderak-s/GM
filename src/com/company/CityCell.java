@@ -10,7 +10,7 @@ public class CityCell extends Cell {
     Player holder;
     Cell helpful;
     //##################################################################################################################################################
-    CityCell( int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
+    CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
         this.rotation=rotation;
         this.color=color;
         this.statusRenta=statusRenta;
@@ -19,6 +19,10 @@ public class CityCell extends Cell {
         this.holder=holder;
         this.helpful=helpful;
         this.rentaMas=rentaMas;
+        //---------------------------------------------------Записати статус, просто викликавши redrawStatus()-------------------------------------------------------
+
+        //---------------------------------------------------Записати назву, аналогічно як в redrawStatus()-------------------------------------------------------
+
     }
     //##################################################################################################################################################
     void action(Player player){
@@ -29,7 +33,7 @@ public class CityCell extends Cell {
 
     }
     //##################################################################################################################################################
-    void redrawSymbolPlayer(char prevChar,char newChar){
+    void redrawSymbolPlayer(String prevChar,String newChar){
 
     }
     //##################################################################################################################################################
