@@ -6,34 +6,19 @@ public class CityCell extends Cell {
     int statusRenta;
     int priceHouse;
     int priceHotel;
-    int[] rentaMas;
+    final int[] rentaMas;
     Player holder;
-    //-----------------------------Константи кольорів рядків-------------------------------------------------------------------------------------------
-    public static final String BLACK_BACKGROUND = "\u001B[40m";
-    public static final String RED_BACKGROUND = "\u001B[41m";
-    public static final String GREEN_BACKGROUND = "\u001B[42m";
-    public static final String YELLOW_BACKGROUND = "\u001B[43m";
-    public static final String BLUE_BACKGROUND = "\u001B[44m";
-    public static final String PURPLE_BACKGROUND = "\u001B[45m";
-    public static final String CYAN_BACKGROUND = "\u001B[46m";
-    public static final String WHITE_BACKGROUND = "\u001B[47m";
-
-    public static final String GRAY_BACKGROUND = "\u001B[100m";
-    public static final String BRIGHT_RED_BACKGROUND = "\u001B[101m";
-    public static final String BRIGHT_GREEN_BACKGROUND = "\u001B[102m";
-    public static final String BRIGHT_YELLOW_BACKGROUND = "\u001B[103m";
-    public static final String BRIGHT_BLUE_BACKGROUND = "\u001B[104m";
-    public static final String BRIGHT_PURPLE_BACKGROUND = "\u001B[105m";
-    public static final String BRIGHT_CYAN_BACKGROUND = "\u001B[106m";
-    public static final String BRIGHT_WHITE_BACKGROUND = "\u001B[107m";
+    Cell helpful;
     //##################################################################################################################################################
-    CityCell( int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, int rMas, Player holder) {
+    CityCell( int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
         this.rotation=rotation;
         this.color=color;
         this.statusRenta=statusRenta;
         this.priceHouse=priceHouse;
         this.priceHotel=priceHotel;
         this.holder=holder;
+        this.helpful=helpful;
+        this.rentaMas=rentaMas;
     }
     //##################################################################################################################################################
     void action(Player player){
@@ -41,13 +26,28 @@ public class CityCell extends Cell {
             player.money =player.money -rentaMas[statusRenta];
 
         }
-    }
-    //##################################################################################################################################################
-    void redrawSymbol(char prevChar,char newChar){
 
     }
     //##################################################################################################################################################
-    void  redrawStatus(){
+    void redrawSymbolPlayer(char prevChar,char newChar){
+
+    }
+    //##################################################################################################################################################
+    void  redrawStatus(char holderChar){
+        //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
+
+        //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
+        int price =rentaMas[statusRenta];
+        String s=String.valueOf(price);
+        char[] masC=s.toCharArray();
+        int lengthMas=masC.length;
+
+        //masC[0]=2
+        //masC[1]=8
+        //masC[2]=0
+    }
+    //##################################################################################################################################################
+    void printInfo(){
 
     }
     //##################################################################################################################################################
@@ -59,11 +59,11 @@ public class CityCell extends Cell {
                         System.out.print(color+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
                         break;
                     default:
-                        System.out.print(WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
+                        System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
                 }
             break;
             case 1:
-                System.out.print(WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+color+cellsMatrix[row][3]);
+                System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+color+cellsMatrix[row][3]);
             break;
 
             case 2:
@@ -72,11 +72,11 @@ public class CityCell extends Cell {
                         System.out.print(color+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
                     break;
                     default:
-                        System.out.print(WHITE_BACKGROUND + cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
+                        System.out.print(GameM.WHITE_BACKGROUND + cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
                 }
             break;
             case 3:
-                System.out.print(color + cellsMatrix[row][0] +WHITE_BACKGROUND+ cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
+                System.out.print(color + cellsMatrix[row][0] +GameM.WHITE_BACKGROUND+ cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
             break;
         }
     }

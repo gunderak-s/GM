@@ -1,11 +1,23 @@
 package com.company;
 
-public class Cell {
-    char[][] cellsMatrix;
-    final static int SIZE_CELLS =4;
+public class RailwayCell extends Cell{
+    int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
+    Player holder;
+    int statusRenta;
+    int[] rentaMas;
+    //##################################################################################################################################################
+    RailwayCell(){
+
+    }
     //##################################################################################################################################################
     void action(Player player){
-
+        if (holder!=null) {
+            holder.money = holder.money + rentaMas[statusRenta];
+            player.money=player.money-rentaMas[statusRenta];
+            System.out.println(holder.name+" оплата ренти: +"+rentaMas[statusRenta]);
+            System.out.println(player.name+" оплата ренти: -"+rentaMas[statusRenta]);
+        }
+        redrawSymbolPlayer(' ',player.symbol);
     }
     //##################################################################################################################################################
     void redrawSymbolPlayer(char prevChar, char newChar){
@@ -14,9 +26,6 @@ public class Cell {
     //##################################################################################################################################################
     void  redrawStatus(char holderChar){
 
-    }
-    //##################################################################################################################################################
-    void printInfo(){
     }
     //##################################################################################################################################################
     void printMatrix(int row){
