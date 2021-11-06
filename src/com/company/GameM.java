@@ -68,7 +68,7 @@ public class GameM {
                 };
             }
         //---------------------------------------------Заповнення CityCell клітинок---------------------------------------------------------------------
-        fildGame[0][1] = new CityCell(0, 150, 150, 220, null);
+
         fildGame[0][1] = new CityCell(2, CityCell.RED_BACKGROUND, 0, 150, 150, 220, null);
         fildGame[0][1].cellsMatrix = new char[][]{{' ', '2', '2', '0'},
                 {' ', ' ', ' ', ' '},
@@ -207,4 +207,4 @@ public class GameM {
 
 
 }
-}
+
