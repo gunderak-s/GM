@@ -2,13 +2,13 @@ package com.company;
 
 public class Player {
     String name;
-    char symbol;
+    String symbol;
     int money;
     int positionOnRoad;
     boolean inPrison;
     int termPrison ;
     //##################################################################################################################################################
-    Player(String name, char symbol){
+    Player(String name, String symbol){
         this.name=name;
         this.symbol=symbol;
         money=1500;

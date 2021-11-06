@@ -17,7 +17,7 @@ public class RailwayCell extends Cell{
             System.out.println(holder.name+" оплата ренти: +"+rentaMas[statusRenta]);
             System.out.println(player.name+" оплата ренти: -"+rentaMas[statusRenta]);
         }
-        redrawSymbolPlayer(' ',player.symbol);
+        redrawSymbolPlayer(" ",player.symbol);
     }
     //##################################################################################################################################################
     void redrawSymbolPlayer(char prevChar, char newChar){
