@@ -2,19 +2,16 @@ package com.company;
 
 public class Player {
     String name;
-    char symbol;
+    String symbol;
     int money;
     int positionOnRoad;
-    {positionOnRoad=0;}
-
+    boolean inPrison;
+    int termPrison ;
     //##################################################################################################################################################
-    void setPositionOnRoad(int cube){
-        for (int i = 0; i < cube; i++) {
-            if (positionOnRoad!=40){
-            positionOnRoad++;}
-            else {
-                positionOnRoad=0;
-            }
-        }
+    Player(String name, String symbol){
+        this.name=name;
+        this.symbol=symbol;
+        money=1500;
+        positionOnRoad=0;
     }
 }
