@@ -25,7 +25,9 @@ public class GameM {
     public static final String BRIGHT_WHITE_BACKGROUND = "\u001B[107m";
     // символів
     final static String HOUSE = Character.toString(0x2302); // домик
-
+    final static String SHIP ="\uD83D\uDEA2";/*🚢*/
+    final static String LIGHT="\uD83D\uDCA1";/*💡*/
+    final static String SHOWER="\uD83D\uDEBF";/*🚿*/
     //---------------------------------------------------Поля-------------------------------------------------------
     final static int SIZE_GAME = 11;
     Cell[][] fieldGame;
