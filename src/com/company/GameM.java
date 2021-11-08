@@ -124,14 +124,28 @@ public class GameM {
 
         return true;
     }
-
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
-        players.add(new Player("Федір", "$"));
-        players.add(new Player("Галина", "&"));
-    }
+       // players.add(new Player("Федір", "$"));
+        //players.add(new Player("Галина", "&"));
+        Scanner scanner= new Scanner(System.in);
+        String s = null;
+        String s1=null;
 
+       do {
+
+            System.out.println("Введіть ім'я та символ гравця, stop - для виходу");
+            if (scanner.hasNext())
+                s=scanner.next();
+            if (scanner.hasNext())
+                s1=scanner.next();
+
+            players.add(new Player(s,s1));
+        }while (!s.equals("stop"));
+
+        scanner.close();
+    }
     //##################################################################################################################################################
     void printField() {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)
