@@ -25,7 +25,9 @@ public class GameM {
     public static final String BRIGHT_WHITE_BACKGROUND = "\u001B[107m";
     // символів
     final static String HOUSE = Character.toString(0x2302); // домик
-
+    final static String SHIP ="\uD83D\uDEA2";/*🚢*/
+    final static String LIGHT="\uD83D\uDCA1";/*💡*/
+    final static String SHOWER="\uD83D\uDEBF";/*🚿*/
     //---------------------------------------------------Поля-------------------------------------------------------
     final static int SIZE_GAME = 11;
     Cell[][] fieldGame;
@@ -122,14 +124,28 @@ public class GameM {
 
         return true;
     }
-
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
-        players.add(new Player("Федір", "$"));
-        players.add(new Player("Галина", "&"));
-    }
+       // players.add(new Player("Федір", "$"));
+        //players.add(new Player("Галина", "&"));
+        Scanner scanner= new Scanner(System.in);
+        String s = null;
+        String s1=null;
 
+       do {
+
+            System.out.println("Введіть ім'я та символ гравця, stop - для виходу");
+            if (scanner.hasNext())
+                s=scanner.next();
+            if (scanner.hasNext())
+                s1=scanner.next();
+
+            players.add(new Player(s,s1));
+        }while (!s.equals("stop"));
+
+        scanner.close();
+    }
     //##################################################################################################################################################
     void printField() {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)
