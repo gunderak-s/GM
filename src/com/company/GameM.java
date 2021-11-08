@@ -90,8 +90,10 @@ public class GameM {
             cube2 = (int) (Math.random() * 6) + 1;
             move(players.get(turn), cube1 + cube2);
             //--------------------------------------------------Видалення поточного гравця, якщо став банкротом---------------------------------------------
-            //  if (players.get(turn).name (player.holder=null && player.money>0))
-            //  System.out.println("Ви стали банкротом"+ players.get(turn).name);
+            if (players.remove(turn).money<0)
+              System.out.println("Ви стали банкротом"+ players.get(turn).name);
+            if(cube1==cube2)
+               System.out.println("Киньте кубики ще раз"+players.get(turn).name);
             //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
             turn++;
             if (turn > players.size() - 1)
@@ -177,36 +179,61 @@ public class GameM {
         Italy[0] = fieldGame[0][1];
         Italy[1] = fieldGame[0][3];
         Italy[2] = fieldGame[0][4];
+
         Netherlands = new CityCell[3];
         Netherlands[0] = fieldGame[0][6];
         Netherlands[1] = fieldGame[0][7];
         Netherlands[2] = fieldGame[0][9];
+
         Norway = new CityCell[3];
         Norway[0] = fieldGame[1][10];
         Norway[1] = fieldGame[2][10];
         Norway[2] = fieldGame[4][10];
+
         Ukraine = new CityCell[2];
         Ukraine[0] = fieldGame[7][10];
         Ukraine[1] = fieldGame[9][10];
+
         Czech = new CityCell[3];
         Czech[0] = fieldGame[1][0];
         Czech[1] = fieldGame[2][0];
         Czech[2] = fieldGame[4][0];
+
         Poland = new CityCell[3];
         Poland[0] = fieldGame[6][0];
         Poland[1] = fieldGame[7][0];
         Poland[2] = fieldGame[9][0];
+
         France = new CityCell[3];
         France[0] = fieldGame[10][1];
         France[1] = fieldGame[10][2];
         France[2] = fieldGame[10][4];
+
         England = new CityCell[2];
         England[0] = fieldGame[10][7];
         England[1] = fieldGame[10][9];
         //---------------------------------------------Заповнення roadGame---------------------------------------------------------------------
-        roadGame = new Cell[SIZE_GAME];
-        roadGame[0] = fieldGame[10][10];
-        roadGame[10]= fieldGame[10][0];
+        roadGame = new Cell[40];
+        int numbrOnRoad = 0;
+        for (int i = 10; i >= 0; i--) {
+            roadGame[numbrOnRoad] = fieldGame[10][i];
+            numbrOnRoad++;
+        }
+        int numbrOnRoad1=10;
+        for (int j = 10; j >= 0; j--) {
+            roadGame[numbrOnRoad1] = fieldGame[j][0];
+            numbrOnRoad1++;
+        }
+        int numbrOnRoad2=20;
+        for (int i = 10; i >= 0; i++) {
+            roadGame[numbrOnRoad2] = fieldGame[0][i];
+            numbrOnRoad2++;
+        }
+        int numbrOnRoad3=30;
+        for (int j = 10; j >= 0; j++){
+            roadGame[numbrOnRoad3] = fieldGame[j][10];
+            numbrOnRoad3++;
+    }
     }
 }
 
