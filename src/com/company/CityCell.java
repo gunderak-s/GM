@@ -70,7 +70,7 @@ public class CityCell extends Cell {
         //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
         int price =rentaMas[statusRenta];
         String s=String.valueOf(price);
-        String[] masS=s.split(s);
+        String[] masS=s.split("");
         //int lengthMas=masC.length;
 
         //masC[0]=2
