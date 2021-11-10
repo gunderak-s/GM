@@ -63,11 +63,15 @@ public class GameM {
         int selectedNumber;
         int numberOnRoad = 0;
         Scanner scanner = new Scanner(System.in);
+        for (int i=0;i< players.size();i++)
+            roadGame[0].redrawSymbolPlayer(" ",players.get(i).symbol);
         while (players.size() > 1) {
+            printField();
             //--------------------------------------------------Діалог----------------------------------------------------------------------------------
-            System.out.print("Натисніть 0, щоб" + players.get(turn).name + "кинув кубики, або ");
+            System.out.println("Натисніть 0, щоб " + players.get(turn).name + " кинув кубики, або ");
             for (int i = 0; i < players.size(); i++)
-                System.out.print((i + 1) + "- щоб" + players.get(i).name + "зайшов в банк, ");
+                System.out.print((i + 1) + "- щоб " + players.get(i).name + " зайшов в банк, ");
+            System.out.println();
             if (scanner.hasNextInt()) {
                 selectedNumber = scanner.nextInt();
                 switch (selectedNumber) {
@@ -90,16 +94,21 @@ public class GameM {
             //--------------------------------------------------Хід гравця----------------------------------------------------------------------------------
             cube1 = (int) (Math.random() * 6) + 1;
             cube2 = (int) (Math.random() * 6) + 1;
+            System.out.println("Кубики: " + cube1+" + "+cube2+" = "+(cube1+cube2));
             move(players.get(turn), cube1 + cube2);
             //--------------------------------------------------Видалення поточного гравця, якщо став банкротом---------------------------------------------
-            if (players.remove(turn).money<0)
-              System.out.println("Ви стали банкротом"+ players.get(turn).name);
-            if(cube1==cube2)
-               System.out.println("Киньте кубики ще раз"+players.get(turn).name);
+            if (players.get(turn).money<0) {
+                System.out.println("Ви стали банкротом" + players.get(turn).name);
+                players.remove(turn);
+            }
             //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
-            turn++;
-            if (turn > players.size() - 1)
-                turn = 0;
+            if(cube1==cube2)
+                System.out.println("Киньте кубики ще раз"+players.get(turn).name);
+            else {
+                turn++;
+                if (turn > players.size() - 1)
+                    turn = 0;
+            }
         }
         //--------------------------------------------------Після циклу - оголошення переможця----------------------------------------------------------
 
@@ -127,24 +136,29 @@ public class GameM {
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
-       // players.add(new Player("Федір", "$"));
-        //players.add(new Player("Галина", "&"));
-        Scanner scanner= new Scanner(System.in);
+        players.add(new Player("Федір", "♇"));
+        players.add(new Player("Галина", "&"));
+        /*Scanner scanner= new Scanner(System.in);
         String s = null;
         String s1=null;
 
        do {
 
             System.out.println("Введіть ім'я та символ гравця, stop - для виходу");
-            if (scanner.hasNext())
-                s=scanner.next();
+            if (scanner.hasNext()) {
+                s = scanner.next();
+                if (s.equals("stop"))
+                    break;
+            }
             if (scanner.hasNext())
                 s1=scanner.next();
 
             players.add(new Player(s,s1));
-        }while (!s.equals("stop"));
-
+           System.out.println("Гравець: "+ players.get(players.size()-1).name+" "+players.get(players.size()-1).symbol);
+           Object o=new Object();
+        }while (true);
         scanner.close();
+        */
     }
     //##################################################################################################################################################
     void printField() {
@@ -186,8 +200,6 @@ public class GameM {
         fieldGame[10][4] = new CityCell("Ліон", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][4], 100, 6, 30, 90, 270, 400, 550);
         fieldGame[10][7] = new CityCell("Манч", 0, GameM.CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][7], 60, 4, 20, 60, 180, 320, 450);
         fieldGame[10][9] = new CityCell("Лонд", 0, CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][9], 60, 2, 10, 30, 90, 160, 250);
-        //---------------------------------------------Заповнення номерів клітинок---------------------------------------------------------------------
-
         //---------------------------------------------Заповнення клітинок інших ігрових класів---------------------------------------------------------------------
 
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
@@ -228,27 +240,27 @@ public class GameM {
         England = new CityCell[2];
         England[0] = fieldGame[10][7];
         England[1] = fieldGame[10][9];
-        //---------------------------------------------Заповнення roadGame---------------------------------------------------------------------
+        //---------------------------------------------Заповнення roadGame і номерів клітинок---------------------------------------------------------------------
         roadGame = new Cell[40];
         int numbrOnRoad = 0;
         for (int i = 10; i >= 0; i--) {
             roadGame[numbrOnRoad] = fieldGame[10][i];
             numbrOnRoad++;
         }
-        int numbrOnRoad1=10;
-        for (int j = 10; j >= 0; j--) {
-            roadGame[numbrOnRoad1] = fieldGame[j][0];
-            numbrOnRoad1++;
+        //int numbrOnRoad1=10;
+        for (int j = 9; j >= 0; j--) {
+            roadGame[numbrOnRoad] = fieldGame[j][0];
+            numbrOnRoad++;
         }
-        int numbrOnRoad2=20;
-        for (int i = 10; i >= 0; i++) {
-            roadGame[numbrOnRoad2] = fieldGame[0][i];
-            numbrOnRoad2++;
+        //int numbrOnRoad2=20;
+        for (int i = 1; i <= 10; i++) {
+            roadGame[numbrOnRoad] = fieldGame[0][i];
+            numbrOnRoad++;
         }
-        int numbrOnRoad3=30;
-        for (int j = 10; j >= 0; j++){
-            roadGame[numbrOnRoad3] = fieldGame[j][10];
-            numbrOnRoad3++;
+        //int numbrOnRoad3=30;
+        for (int j = 1; j <= 9; j++){
+            roadGame[numbrOnRoad] = fieldGame[j][10];
+            numbrOnRoad++;
     }
     }
 }
