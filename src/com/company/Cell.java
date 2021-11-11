@@ -1,6 +1,8 @@
 package com.company;
 
-public class Cell {
+import java.io.Serializable;
+
+public class Cell implements Serializable {
     String[][] cellsMatrix;
     final static int SIZE_CELLS =4;
     //##################################################################################################################################################

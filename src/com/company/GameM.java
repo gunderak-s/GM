@@ -1,9 +1,10 @@
 package com.company;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GameM {
+public class GameM implements Serializable {
     //---------------------------------------------------Костанти-------------------------------------------------------
     // темніші рядків
     public static final String BLACK_BACKGROUND = "\u001B[40m";
@@ -51,7 +52,6 @@ public class GameM {
         players = null;
         Italy = null;
     }
-
     //##################################################################################################################################################
     void game() {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
