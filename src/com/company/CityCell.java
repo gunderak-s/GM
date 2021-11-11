@@ -9,8 +9,10 @@ public class CityCell extends Cell {
     final int[] rentaMas;
     Player holder;
     Cell helpful;
+    String name;
     //##################################################################################################################################################
     CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
+        this.name=name;
         this.rotation=rotation;
         this.color=color;
         this.statusRenta=statusRenta;
@@ -22,6 +24,28 @@ public class CityCell extends Cell {
         //---------------------------------------------------Записати статус, просто викликавши redrawStatus()-------------------------------------------------------
 
         //---------------------------------------------------Записати назву, аналогічно як в redrawStatus()-------------------------------------------------------
+        String name= String.valueOf(name);
+        String[] n=name.split("");
+          switch (rotation) {
+              case 0:
+                  for (int i=0; i<=3; i++)
+                System.out.print(n+cellsMatrix[i][0]+cellsMatrix[i][1]+cellsMatrix[i][2]+cellsMatrix[i][3]);
+                  break;
+              case 1:
+                  for (int j=0; j<=3; j++)
+                      System.out.print(n+cellsMatrix[0][j]+cellsMatrix[1][j]+cellsMatrix[2][j]+cellsMatrix[3][j]);
+                  break;
+              case 2:
+                  for (int i=0; i<=3; i++)
+                      System.out.print(n+cellsMatrix[i][0]+cellsMatrix[i][1]+cellsMatrix[i][2]+cellsMatrix[i][3]);
+
+              case 3:
+                  for (int j=0; j<=3; j++)
+                      System.out.print(n+cellsMatrix[0][j]+cellsMatrix[1][j]+cellsMatrix[2][j]+cellsMatrix[3][j]);
+                  break;
+
+          }
+
 
     }
     //##################################################################################################################################################
@@ -37,19 +61,48 @@ public class CityCell extends Cell {
 
     }
     //##################################################################################################################################################
-    void  redrawStatus(char holderChar){
+    void  redrawStatus(char holderChar) {
         //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
 
         //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
-        int price =rentaMas[statusRenta];
-        String s=String.valueOf(price);
-        char[] masC=s.toCharArray();
-        int lengthMas=masC.length;
+        int price = rentaMas[statusRenta];
+        String s = String.valueOf(price);
+        char[] masC = s.toCharArray();
+        switch (rotation) {
+            case 0:
+                switch (row) {
+                    case 0:
+                        for (int i = 0; i <= 3; i++)
+                            System.out.print(masC + cellsMatrix[i][0] + cellsMatrix[i][1] + cellsMatrix[i][2] + cellsMatrix[i][3]);
+                }
+                break;
+            case 1:
+                for (int j=0; j<=3; j++)
+                    System.out.print(masC+cellsMatrix[0][j]+cellsMatrix[1][j]+cellsMatrix[2][j]+cellsMatrix[3][j]);
+                break;
 
+            case 2:
+                switch (row) {
+                    case 2:
+                        for (int i = 0; i <= 3; i++)
+                            System.out.print(masC + cellsMatrix[i][0] + cellsMatrix[i][1] + cellsMatrix[i][2] + cellsMatrix[i][3]);
+                }
+                break;
+            case 3:
+                    case 3:
+                        for (int j = 0; j <= 3; j++)
+                            System.out.print(masC + cellsMatrix[0][j] + cellsMatrix[1][j] + cellsMatrix[2][j] + cellsMatrix[3][j]);
+                        break;
+                break;
+
+        }
+
+
+    }
         //masC[0]=2
         //masC[1]=8
         //masC[2]=0
-    }
+
     //##################################################################################################################################################
     void printInfo(){
 

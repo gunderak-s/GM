@@ -92,14 +92,18 @@ public class GameM {
             cube2 = (int) (Math.random() * 6) + 1;
             move(players.get(turn), cube1 + cube2);
             //--------------------------------------------------Видалення поточного гравця, якщо став банкротом---------------------------------------------
-            if (players.remove(turn).money<0)
-              System.out.println("Ви стали банкротом"+ players.get(turn).name);
-            if(cube1==cube2)
-               System.out.println("Киньте кубики ще раз"+players.get(turn).name);
-            //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
-            turn++;
-            if (turn > players.size() - 1)
-                turn = 0;
+            if (players.get(turn).money < 0) {
+                System.out.println("Ви стали банкротом" + players.get(turn).name);
+                players.remove(turn);
+            }
+            if (cube1 == cube2)
+                System.out.println("Киньте кубики ще раз" + players.get(turn).name);
+                //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
+            else {
+                turn++;
+                if (turn > players.size() - 1)
+                    turn = 0;
+            }
         }
         //--------------------------------------------------Після циклу - оголошення переможця----------------------------------------------------------
 
@@ -235,20 +239,17 @@ public class GameM {
             roadGame[numbrOnRoad] = fieldGame[10][i];
             numbrOnRoad++;
         }
-        int numbrOnRoad1=10;
-        for (int j = 10; j >= 0; j--) {
-            roadGame[numbrOnRoad1] = fieldGame[j][0];
-            numbrOnRoad1++;
+        for (int j = 9; j >= 0; j--) {
+            roadGame[numbrOnRoad] = fieldGame[j][0];
+            numbrOnRoad++;
         }
-        int numbrOnRoad2=20;
-        for (int i = 10; i >= 0; i++) {
-            roadGame[numbrOnRoad2] = fieldGame[0][i];
-            numbrOnRoad2++;
+        for (int i = 10; i >= 1; i--) {
+            roadGame[numbrOnRoad] = fieldGame[0][i];
+            numbrOnRoad++;
         }
-        int numbrOnRoad3=30;
-        for (int j = 10; j >= 0; j++){
-            roadGame[numbrOnRoad3] = fieldGame[j][10];
-            numbrOnRoad3++;
+        for (int j = 9; j >= 1; j--){
+            roadGame[numbrOnRoad] = fieldGame[j][10];
+            numbrOnRoad++;
     }
     }
 }
