@@ -15,7 +15,6 @@ public class TestGameM {
         System.out.println("Нова гра -0, завантажити -1");
         if (scanner.hasNextInt())
             if (scanner.nextInt()==0) {
-                scanner.close();
                 g1 = new GameM();
                 g1.game(true);
             }
@@ -27,7 +26,6 @@ public class TestGameM {
                      g1=loadGame(fileName);
                  }
                  while (g1==null);
-                 scanner.close();
                  g1.game(false);
             }
         // тут будем після виходу із гри
