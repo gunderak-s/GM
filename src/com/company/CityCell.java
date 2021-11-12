@@ -33,7 +33,7 @@ public class CityCell extends Cell {
 
     }
     //##################################################################################################################################################
-    void redrawSymbolPlayer(String oldChar, String newChar){
+    void redrawSymbolPlayer(String prevChar,String newChar){
 
     }
     //##################################################################################################################################################
@@ -43,8 +43,8 @@ public class CityCell extends Cell {
         //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
         int price =rentaMas[statusRenta];
         String s=String.valueOf(price);
-        char[] masC=s.toCharArray();
-        int lengthMas=masC.length;
+        String[] masS=s.split("");
+        //int lengthMas=masC.length;
 
         //masC[0]=2
         //masC[1]=8

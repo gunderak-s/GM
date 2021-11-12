@@ -1,9 +1,10 @@
 package com.company;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GameM {
+public class GameM implements Serializable {
     //---------------------------------------------------Костанти-------------------------------------------------------
     // темніші рядків
     public static final String BLACK_BACKGROUND = "\u001B[40m";
@@ -32,6 +33,7 @@ public class GameM {
     final static int SIZE_GAME = 11;
     Cell[][] fieldGame;
     Cell[] roadGame;
+    int turn;
     int numberOfHouses;
     ArrayList<Player> players;
     Cell[] Italy;
@@ -50,20 +52,24 @@ public class GameM {
         numberOfHouses = 32;
         players = null;
         Italy = null;
+        turn=0;
     }
-
     //##################################################################################################################################################
-    void game() {
+    void game(boolean newGame) {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
-        setField();
-        setPlayers();
-        int turn = 0;
+        if (newGame){
+            setField();
+            setPlayers();
+        }
         int cube1;
         int cube2;
         int selectedNumber;
         int numberOnRoad = 0;
         Scanner scanner = new Scanner(System.in);
+        for (int i=0;i< players.size();i++)
+            roadGame[0].redrawSymbolPlayer(" ",players.get(i).symbol);
         while (players.size() > 1) {
+            printField();
             //--------------------------------------------------Діалог----------------------------------------------------------------------------------
             System.out.print("Натисніть 0, щоб" + players.get(turn).name + "кинув кубики, або ");
             for (int i = 0; i < players.size(); i++)
@@ -127,9 +133,9 @@ public class GameM {
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
-       // players.add(new Player("Федір", "$"));
-        //players.add(new Player("Галина", "&"));
-        Scanner scanner= new Scanner(System.in);
+        players.add(new Player("Федір", "♇"));
+        players.add(new Player("Галина", "&"));
+        /*Scanner scanner= new Scanner(System.in);
         String s = null;
         String s1=null;
 
@@ -145,6 +151,7 @@ public class GameM {
         }while (!s.equals("stop"));
 
         scanner.close();
+        */
     }
     //##################################################################################################################################################
     void printField() {
@@ -186,8 +193,6 @@ public class GameM {
         fieldGame[10][4] = new CityCell("Ліон", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][4], 100, 6, 30, 90, 270, 400, 550);
         fieldGame[10][7] = new CityCell("Манч", 0, GameM.CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][7], 60, 4, 20, 60, 180, 320, 450);
         fieldGame[10][9] = new CityCell("Лонд", 0, CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][9], 60, 2, 10, 30, 90, 160, 250);
-        //---------------------------------------------Заповнення номерів клітинок---------------------------------------------------------------------
-
         //---------------------------------------------Заповнення клітинок інших ігрових класів---------------------------------------------------------------------
 
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
@@ -228,7 +233,7 @@ public class GameM {
         England = new CityCell[2];
         England[0] = fieldGame[10][7];
         England[1] = fieldGame[10][9];
-        //---------------------------------------------Заповнення roadGame---------------------------------------------------------------------
+        //---------------------------------------------Заповнення roadGame і номерів клітинок---------------------------------------------------------------------
         roadGame = new Cell[40];
         int numbrOnRoad = 0;
         for (int i = 10; i >= 0; i--) {
