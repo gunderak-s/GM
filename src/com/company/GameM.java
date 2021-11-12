@@ -33,6 +33,7 @@ public class GameM implements Serializable {
     final static int SIZE_GAME = 11;
     Cell[][] fieldGame;
     Cell[] roadGame;
+    int turn;
     int numberOfHouses;
     ArrayList<Player> players;
     Cell[] Italy;
@@ -51,13 +52,15 @@ public class GameM implements Serializable {
         numberOfHouses = 32;
         players = null;
         Italy = null;
+        turn=0;
     }
     //##################################################################################################################################################
-    void game() {
+    void game(boolean newGame) {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
-        setField();
-        setPlayers();
-        int turn = 0;
+        if (newGame){
+            setField();
+            setPlayers();
+        }
         int cube1;
         int cube2;
         int selectedNumber;
@@ -71,6 +74,7 @@ public class GameM implements Serializable {
             System.out.println("Натисніть 0, щоб " + players.get(turn).name + " кинув кубики, або ");
             for (int i = 0; i < players.size(); i++)
                 System.out.print((i + 1) + "- щоб " + players.get(i).name + " зайшов в банк, ");
+            System.out.print("Натисніть 5, щоб вийти з гри");
             System.out.println();
             if (scanner.hasNextInt()) {
                 selectedNumber = scanner.nextInt();
@@ -86,6 +90,8 @@ public class GameM implements Serializable {
                         else
                             System.out.print("Неможлива покупка");
                         continue;
+                    case 5:
+                        return;
                     default:
                         System.out.print("Некоректне значення");
                         continue;
