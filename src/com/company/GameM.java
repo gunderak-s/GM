@@ -33,6 +33,7 @@ public class GameM implements Serializable {
     final static int SIZE_GAME = 11;
     Cell[][] fieldGame;
     Cell[] roadGame;
+    int turn;
     int numberOfHouses;
     ArrayList<Player> players;
     Cell[] Italy;
@@ -51,13 +52,15 @@ public class GameM implements Serializable {
         numberOfHouses = 32;
         players = null;
         Italy = null;
+        turn=0;
     }
     //##################################################################################################################################################
-    void game() {
+    void game(boolean newGame) {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
-        setField();
-        setPlayers();
-        int turn = 0;
+        if (newGame){
+            setField();
+            setPlayers();
+        }
         int cube1;
         int cube2;
         int selectedNumber;
