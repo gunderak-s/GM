@@ -29,6 +29,29 @@ public class CompanyCell extends Cell{
     }
     //##################################################################################################################################################
 
+    void redrawSymbolPlayer(String oldChar, String newChar) {
+        /*0-знизу, 1-зліва, 2-згори, 3-справа*/
+        switch (rotation){
+            case 2:
+        for (int i = 0; i <cellsMatrix.length ; i++) {
+            if (cellsMatrix[2][i] == oldChar) cellsMatrix[2][i] = newChar;
+            break; }
+            case 3:
+                for (int i = 0; i <cellsMatrix.length ; i++) {
+                    if (cellsMatrix[i][1]==oldChar) cellsMatrix[i][1]=newChar;
+                }
+            case 0:
+                for (int i = 0; i <cellsMatrix.length ; i++) {
+                    if (cellsMatrix[1][i]==oldChar) cellsMatrix[1][i]=newChar;
+                }
+            case 1:
+                for (int i = 0; i <cellsMatrix.length ; i++) {
+                    if (cellsMatrix[i][2]==oldChar) cellsMatrix[i][2]=newChar;
+                }
+        }
+    }
+
+
     //##################################################################################################################################################
     void  redrawStatus(char holderChar){
         //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
