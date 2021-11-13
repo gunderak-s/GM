@@ -11,19 +11,53 @@ public class CityCell extends Cell {
     Cell helpful;
     //##################################################################################################################################################
     CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
-        this.rotation=rotation;
-        this.color=color;
-        this.statusRenta=statusRenta;
-        this.priceHouse=priceHouse;
-        this.priceHotel=priceHotel;
-        this.holder=holder;
-        this.helpful=helpful;
-        this.rentaMas=rentaMas;
+        this.rotation = rotation;
+        this.color = color;
+        this.statusRenta = statusRenta;
+        this.priceHouse = priceHouse;
+        this.priceHotel = priceHotel;
+        this.holder = holder;
+        this.helpful = helpful;
+        this.rentaMas = rentaMas;
         //---------------------------------------------------Записати статус, просто викликавши redrawStatus()-------------------------------------------------------
 
         //---------------------------------------------------Записати назву, аналогічно як в redrawStatus()-------------------------------------------------------
 
-    }
+            String[] n = name.split("");
+
+            switch (rotation) {
+                case 0:
+                    for (int i = 0; i < 4; i++) {
+                        cellsMatrix[1][i] = n.toString();
+                        return;
+                    }
+                    break;
+
+                case 1:
+                    for (int j = 0; j < 4; j++) {
+                        cellsMatrix[j][2] = n.toString();
+                        return;
+                    }
+                    break;
+
+
+                case 2:
+                    for (int i = 0; i < 4; i++) {
+                        cellsMatrix[2][i] = n.toString();
+                        return;
+                    }
+                    break;
+
+                case 3:
+                    for (int j = 0; j < 4; j++) {
+                        cellsMatrix[j][1] = n.toString();
+                        return;
+                    }
+                    break;
+            }
+
+        }
+
     //##################################################################################################################################################
     void action(Player player){
         if (statusRenta!=0){
@@ -57,15 +91,46 @@ public class CityCell extends Cell {
         //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
 
         //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
+
         int price =rentaMas[statusRenta];
         String s=String.valueOf(price);
         String[] masS=s.split("");
         //int lengthMas=masC.length;
 
+        switch (rotation) {
+            case 0:
+                for (int i = 0; i < 4; i++){
+                    cellsMatrix[3][i] = masS[i];
+                return;
+                }
+                break;
+
+            case 1:
+                for (int j = 0; j < 4; j++){
+                    cellsMatrix[j][0] = masS[j];
+                return;
+                }
+                break;
+
+            case 2:
+                for (int i = 0; i < 4; i++){
+                    cellsMatrix[0][i] = masC.toString();
+                return;
+                }
+                break;
+
+            case 3:
+                for (int j = 0; j < 4; j++){
+                    cellsMatrix[j][3] = masC.toString();
+                return;
+                }
+                break;
+        }
+    }
         //masC[0]=2
         //masC[1]=8
         //masC[2]=0
-    }
+
     //##################################################################################################################################################
     void printInfo(){
 
