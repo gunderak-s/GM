@@ -31,9 +31,6 @@ public class Cell implements Serializable {
 
     }
     //##################################################################################################################################################
-    void printInfo(){
-    }
-    //##################################################################################################################################################
     void printMatrix(int row){
         System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
     }
