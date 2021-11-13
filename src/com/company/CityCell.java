@@ -23,7 +23,7 @@ public class CityCell extends Cell {
 
         //---------------------------------------------------Записати назву, аналогічно як в redrawStatus()-------------------------------------------------------
 
-            String[] n = name.split(name);
+            String[] n = name.split("");
 
             switch (rotation) {
                 case 0:
@@ -100,14 +100,14 @@ public class CityCell extends Cell {
         switch (rotation) {
             case 0:
                 for (int i = 0; i < 4; i++){
-                    cellsMatrix[3][i] = masC[i];
+                    cellsMatrix[3][i] = masS[i];
                 return;
                 }
                 break;
 
             case 1:
                 for (int j = 0; j < 4; j++){
-                    cellsMatrix[j][0] = masC.toString();
+                    cellsMatrix[j][0] = masS[j];
                 return;
                 }
                 break;
