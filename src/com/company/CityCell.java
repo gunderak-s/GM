@@ -9,45 +9,55 @@ public class CityCell extends Cell {
     final int[] rentaMas;
     Player holder;
     Cell helpful;
-    String name;
     //##################################################################################################################################################
     CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
-        this.name=name;
-        this.rotation=rotation;
-        this.color=color;
-        this.statusRenta=statusRenta;
-        this.priceHouse=priceHouse;
-        this.priceHotel=priceHotel;
-        this.holder=holder;
-        this.helpful=helpful;
-        this.rentaMas=rentaMas;
+        this.rotation = rotation;
+        this.color = color;
+        this.statusRenta = statusRenta;
+        this.priceHouse = priceHouse;
+        this.priceHotel = priceHotel;
+        this.holder = holder;
+        this.helpful = helpful;
+        this.rentaMas = rentaMas;
         //---------------------------------------------------Записати статус, просто викликавши redrawStatus()-------------------------------------------------------
 
         //---------------------------------------------------Записати назву, аналогічно як в redrawStatus()-------------------------------------------------------
-        String name= String.valueOf(name);
-        String[] n=name.split("");
-          switch (rotation) {
-              case 0:
-                  for (int i=0; i<=3; i++)
-                System.out.print(n+cellsMatrix[i][0]+cellsMatrix[i][1]+cellsMatrix[i][2]+cellsMatrix[i][3]);
-                  break;
-              case 1:
-                  for (int j=0; j<=3; j++)
-                      System.out.print(n+cellsMatrix[0][j]+cellsMatrix[1][j]+cellsMatrix[2][j]+cellsMatrix[3][j]);
-                  break;
-              case 2:
-                  for (int i=0; i<=3; i++)
-                      System.out.print(n+cellsMatrix[i][0]+cellsMatrix[i][1]+cellsMatrix[i][2]+cellsMatrix[i][3]);
 
-              case 3:
-                  for (int j=0; j<=3; j++)
-                      System.out.print(n+cellsMatrix[0][j]+cellsMatrix[1][j]+cellsMatrix[2][j]+cellsMatrix[3][j]);
-                  break;
+            String[] n = name.split(name);
 
-          }
+            switch (rotation) {
+                case 0:
+                    for (int i = 0; i < 4; i++) {
+                        cellsMatrix[1][i] = n.toString();
+                        return;
+                    }
+                    break;
+
+                case 1:
+                    for (int j = 0; j < 4; j++) {
+                        cellsMatrix[j][2] = n.toString();
+                        return;
+                    }
+                    break;
 
 
-    }
+                case 2:
+                    for (int i = 0; i < 4; i++) {
+                        cellsMatrix[2][i] = n.toString();
+                        return;
+                    }
+                    break;
+
+                case 3:
+                    for (int j = 0; j < 4; j++) {
+                        cellsMatrix[j][1] = n.toString();
+                        return;
+                    }
+                    break;
+            }
+
+        }
+
     //##################################################################################################################################################
     void action(Player player){
         if (statusRenta!=0){
@@ -68,36 +78,36 @@ public class CityCell extends Cell {
         int price = rentaMas[statusRenta];
         String s = String.valueOf(price);
         char[] masC = s.toCharArray();
+
         switch (rotation) {
             case 0:
-                switch (row) {
-                    case 0:
-                        for (int i = 0; i <= 3; i++)
-                            System.out.print(masC + cellsMatrix[i][0] + cellsMatrix[i][1] + cellsMatrix[i][2] + cellsMatrix[i][3]);
+                for (int i = 0; i < 4; i++){
+                    cellsMatrix[3][i] = masC[i];
+                return;
                 }
                 break;
+
             case 1:
-                for (int j=0; j<=3; j++)
-                    System.out.print(masC+cellsMatrix[0][j]+cellsMatrix[1][j]+cellsMatrix[2][j]+cellsMatrix[3][j]);
+                for (int j = 0; j < 4; j++){
+                    cellsMatrix[j][0] = masC.toString();
+                return;
+                }
                 break;
 
             case 2:
-                switch (row) {
-                    case 2:
-                        for (int i = 0; i <= 3; i++)
-                            System.out.print(masC + cellsMatrix[i][0] + cellsMatrix[i][1] + cellsMatrix[i][2] + cellsMatrix[i][3]);
+                for (int i = 0; i < 4; i++){
+                    cellsMatrix[0][i] = masC.toString();
+                return;
                 }
                 break;
+
             case 3:
-                    case 3:
-                        for (int j = 0; j <= 3; j++)
-                            System.out.print(masC + cellsMatrix[0][j] + cellsMatrix[1][j] + cellsMatrix[2][j] + cellsMatrix[3][j]);
-                        break;
+                for (int j = 0; j < 4; j++){
+                    cellsMatrix[j][3] = masC.toString();
+                return;
+                }
                 break;
-
         }
-
-
     }
         //masC[0]=2
         //masC[1]=8
