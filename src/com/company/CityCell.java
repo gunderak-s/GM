@@ -64,14 +64,30 @@ public class CityCell extends Cell {
             player.money =player.money -rentaMas[statusRenta];
 
         }
+        redrawSymbolPlayer(" ",player.symbol);
+    }
+    //##################################################################################################################################################
+    void redrawSymbolPlayer(String prevChar,String newChar){
 
     }
     //##################################################################################################################################################
-    void redrawSymbolPlayer(String oldChar, String newChar){
+    void  resetStatus(Player holder){
 
+        //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
+
+        //--------------------------------------------------Запис ренти-------------------------------------------------------------------------------
+        int price =rentaMas[statusRenta];
+        String s=String.valueOf(price);
+        String[] masS=s.split("");
+        //int lengthMas=masC.length;
+
+        //masC[0]=2
+        //masC[1]=8
+        //masC[2]=0
     }
     //##################################################################################################################################################
-    void  redrawStatus(char holderChar) {
+    void  resetStatus(){
+
         //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
 
         //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
@@ -86,6 +102,10 @@ public class CityCell extends Cell {
                 return;
                 }
                 break;
+        int price =rentaMas[statusRenta];
+        String s=String.valueOf(price);
+        String[] masS=s.split("");
+        //int lengthMas=masC.length;
 
             case 1:
                 for (int j = 0; j < 4; j++){
