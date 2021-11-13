@@ -91,9 +91,11 @@ public class CityCell extends Cell {
         //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
 
         //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
-        int price = rentaMas[statusRenta];
-        String s = String.valueOf(price);
-        char[] masC = s.toCharArray();
+
+        int price =rentaMas[statusRenta];
+        String s=String.valueOf(price);
+        String[] masS=s.split("");
+        //int lengthMas=masC.length;
 
         switch (rotation) {
             case 0:
@@ -102,10 +104,6 @@ public class CityCell extends Cell {
                 return;
                 }
                 break;
-        int price =rentaMas[statusRenta];
-        String s=String.valueOf(price);
-        String[] masS=s.split("");
-        //int lengthMas=masC.length;
 
             case 1:
                 for (int j = 0; j < 4; j++){
