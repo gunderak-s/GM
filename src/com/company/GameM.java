@@ -139,29 +139,28 @@ public class GameM implements Serializable {
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
-        players.add(new Player("Федір", "♇"));
-        players.add(new Player("Галина", "&"));
-        /*Scanner scanner= new Scanner(System.in);
+        //  players.add(new Player("Федір", "?"));
+        // players.add(new Player("Галина", "&"));
+        Scanner scanner= new Scanner(System.in);
         String s = null;
         String s1=null;
 
-       do {
+        do {
 
-            System.out.println("Введіть ім'я та символ гравця, stop - для виходу");
+            System.out.println("Введіть ім'я та символ гравця, x - для виходу");
             if (scanner.hasNext()) {
                 s = scanner.next();
-                if (s.equals("stop"))
+                if (s.equals("x"))
                     break;
             }
             if (scanner.hasNext())
                 s1=scanner.next();
 
             players.add(new Player(s,s1));
-           System.out.println("Гравець: "+ players.get(players.size()-1).name+" "+players.get(players.size()-1).symbol);
-           Object o=new Object();
-        }while (true);
+            System.out.println("Гравець: "+ players.get(players.size()-1).name+" "+players.get(players.size()-1).symbol);
+            Object o=new Object();
+        }while (players.size()!=4);
         scanner.close();
-        */
     }
     //##################################################################################################################################################
     void printField() {
