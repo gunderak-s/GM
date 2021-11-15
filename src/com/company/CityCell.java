@@ -27,30 +27,30 @@ public class CityCell extends Cell {
 
             switch (rotation) {
                 case 0:
-                    for (int i = 0; i < 4; i++) {
-                        cellsMatrix[1][i] = n.toString();
+                    for (int i = 0; i<=3; i++) {
+                       cellsMatrix[1][i] = n[i];
                         return;
                     }
                     break;
 
                 case 1:
-                    for (int j = 0; j < 4; j++) {
-                        cellsMatrix[j][2] = n.toString();
+                    for (int j = 0; j <= 3; j++) {
+                       cellsMatrix[j][2] = n[j];
                         return;
                     }
                     break;
 
 
                 case 2:
-                    for (int i = 0; i < 4; i++) {
-                        cellsMatrix[2][i] = n.toString();
+                    for (int i = 0; i <=3; i++) {
+                        cellsMatrix[2][i] = n[i];
                         return;
                     }
                     break;
 
                 case 3:
-                    for (int j = 0; j < 4; j++) {
-                        cellsMatrix[j][1] = n.toString();
+                    for (int j = 0; j <= 3; j++) {
+                        cellsMatrix[j][1] = n[j];
                         return;
                     }
                     break;
@@ -114,14 +114,14 @@ public class CityCell extends Cell {
 
             case 2:
                 for (int i = 0; i < 4; i++){
-                    cellsMatrix[0][i] = masC.toString();
+                    cellsMatrix[0][i] = masS[i];
                 return;
                 }
                 break;
 
             case 3:
                 for (int j = 0; j < 4; j++){
-                    cellsMatrix[j][3] = masC.toString();
+                    cellsMatrix[j][3] = masS[j];
                 return;
                 }
                 break;

@@ -3,6 +3,7 @@ package com.company;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.Callable;
 
 public class GameM implements Serializable {
     //---------------------------------------------------Костанти-------------------------------------------------------
@@ -26,9 +27,9 @@ public class GameM implements Serializable {
     public static final String BRIGHT_WHITE_BACKGROUND = "\u001B[107m";
     // символів
     final static String HOUSE = Character.toString(0x2302); // домик
-    final static String SHIP ="\uD83D\uDEA2";/*🚢*/
-    final static String LIGHT="\uD83D\uDCA1";/*💡*/
-    final static String SHOWER="\uD83D\uDEBF";/*🚿*/
+    final static String SHIP = "\uD83D\uDEA2";/*🚢*/
+    final static String LIGHT = "\uD83D\uDCA1";/*💡*/
+    final static String SHOWER = "\uD83D\uDEBF";/*🚿*/
     //---------------------------------------------------Поля-------------------------------------------------------
     final static int SIZE_GAME = 11;
     Cell[][] fieldGame;
@@ -44,6 +45,8 @@ public class GameM implements Serializable {
     Cell[] Ukraine;
     Cell[] Norway;
     Cell[] Czech;
+    Cell[] Port;
+    Cell[] Company;
 
     //##################################################################################################################################################
     GameM() {
@@ -52,12 +55,13 @@ public class GameM implements Serializable {
         numberOfHouses = 32;
         players = null;
         Italy = null;
-        turn=0;
+        turn = 0;
     }
+
     //##################################################################################################################################################
     void game(boolean newGame) {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
-        if (newGame){
+        if (newGame) {
             setField();
             setPlayers();
         }
@@ -66,8 +70,8 @@ public class GameM implements Serializable {
         int selectedNumber;
         int numberOnRoad = 0;
         Scanner scanner = new Scanner(System.in);
-        for (int i=0;i< players.size();i++)
-            roadGame[0].redrawSymbolPlayer(" ",players.get(i).symbol);
+        for (int i = 0; i < players.size(); i++)
+            roadGame[0].redrawSymbolPlayer(" ", players.get(i).symbol);
         while (players.size() > 1) {
             printField();
             //--------------------------------------------------Діалог----------------------------------------------------------------------------------
@@ -134,6 +138,7 @@ public class GameM implements Serializable {
 
         return true;
     }
+
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
@@ -157,6 +162,7 @@ public class GameM implements Serializable {
         scanner.close();
         */
     }
+
     //##################################################################################################################################################
     void printField() {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)
@@ -198,7 +204,12 @@ public class GameM implements Serializable {
         fieldGame[10][7] = new CityCell("Манч", 0, GameM.CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][7], 60, 4, 20, 60, 180, 320, 450);
         fieldGame[10][9] = new CityCell("Лонд", 0, CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][9], 60, 2, 10, 30, 90, 160, 250);
         //---------------------------------------------Заповнення клітинок інших ігрових класів---------------------------------------------------------------------
-
+        fieldGame[0][8] = new CompanyCell(2, SHOWER, 0, 150, fieldGame[1][8], null, 150);
+        fieldGame[8][0] = new CompanyCell(1, LIGHT, 0, 150, fieldGame[8][1], null, 150);
+        fieldGame[0][5] = new PortCell(2, SHIP, 0, 200, fieldGame[1][5], null, 200, 25, 50, 100, 200);
+        fieldGame[5][10] = new PortCell(3, SHIP, 0, 200, fieldGame[5][9], null, 200, 25, 50, 100, 200);
+        fieldGame[10][5] = new PortCell(0, SHIP, 0, 200, fieldGame[9][5], null,200, 25, 50, 100, 200);
+        fieldGame[5][0] = new PortCell(1, SHIP, 0, 200, fieldGame[5][1], null, 200, 25, 50, 100, 200);
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
         Italy = new CityCell[3];
         Italy[0] = fieldGame[0][1];
@@ -237,6 +248,18 @@ public class GameM implements Serializable {
         England = new CityCell[2];
         England[0] = fieldGame[10][7];
         England[1] = fieldGame[10][9];
+
+        Port = new PortCell[4];
+        Port[0] = fieldGame[10][5];
+        Port[1] = fieldGame[5][0];
+        Port[2] = fieldGame[0][5];
+        Port[3] = fieldGame[5][10];
+
+        Company = new CompanyCell[2];
+        Company[0] = fieldGame[8][0];
+        Company[1] = fieldGame[0][8];
+
+
         //---------------------------------------------Заповнення roadGame і номерів клітинок---------------------------------------------------------------------
         roadGame = new Cell[40];
         int numbrOnRoad = 0;
