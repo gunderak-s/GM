@@ -9,6 +9,7 @@ public class CityCell extends Cell {
     final int[] rentaMas;
     Player holder;
     Cell helpful;
+
     //##################################################################################################################################################
     CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
         this.rotation = rotation;
@@ -20,7 +21,7 @@ public class CityCell extends Cell {
         this.helpful = helpful;
         this.rentaMas = rentaMas;
         //---------------------------------------------------Записати статус, просто викликавши redrawStatus()-------------------------------------------------------
-
+        resetStatus();
         //---------------------------------------------------Записати назву, аналогічно як в redrawStatus()-------------------------------------------------------
 
             String[] n = name.split("");
@@ -29,14 +30,12 @@ public class CityCell extends Cell {
                 case 0:
                     for (int i = 0; i<=3; i++) {
                        cellsMatrix[1][i] = n[i];
-                        return;
                     }
                     break;
 
                 case 1:
                     for (int j = 0; j <= 3; j++) {
                        cellsMatrix[j][2] = n[j];
-                        return;
                     }
                     break;
 
@@ -44,14 +43,12 @@ public class CityCell extends Cell {
                 case 2:
                     for (int i = 0; i <=3; i++) {
                         cellsMatrix[2][i] = n[i];
-                        return;
                     }
                     break;
 
                 case 3:
                     for (int j = 0; j <= 3; j++) {
                         cellsMatrix[j][1] = n[j];
-                        return;
                     }
                     break;
             }
@@ -71,20 +68,39 @@ public class CityCell extends Cell {
 
     }
     //##################################################################################################################################################
-    void  resetStatus(Player holder){
+    void drawCellNumberOnRoad(int numbrOnRoad){
+        int number = numbrOnRoad;
+        String r=String.valueOf(number);
+        String[] masR=r.split("");
+        int lengthMas=masR.length;
+        switch (rotation) {
+            case 0:
+                for (int i = 1; i <lengthMas; i++){
+                    helpful.cellsMatrix[3][i] = masR[i-1];
+                }
+                break;
 
-        //--------------------------------------------------Запис власника-------------------------------------------------------------------------------
+            case 1:
+                for (int j = 1; j <lengthMas; j++){
+                    helpful.cellsMatrix[j][0] = masR[j-1];
+                }
+                break;
 
-        //--------------------------------------------------Запис ренти-------------------------------------------------------------------------------
-        int price =rentaMas[statusRenta];
-        String s=String.valueOf(price);
-        String[] masS=s.split("");
-        //int lengthMas=masC.length;
+            case 2:
+                for (int i = 1; i <lengthMas; i++){
+                    helpful.cellsMatrix[0][i] = masR[i-1];
+                }
+                break;
 
-        //masC[0]=2
-        //masC[1]=8
-        //masC[2]=0
+            case 3:
+                for (int j = 1; j <lengthMas; j++){
+                    helpful.cellsMatrix[j][3] = masR[j-1];
+                }
+                break;
+        }
     }
+
+
     //##################################################################################################################################################
     void  resetStatus(){
 
@@ -95,34 +111,30 @@ public class CityCell extends Cell {
         int price =rentaMas[statusRenta];
         String s=String.valueOf(price);
         String[] masS=s.split("");
-        //int lengthMas=masC.length;
+        int lengthMas=masS.length;
 
         switch (rotation) {
             case 0:
-                for (int i = 0; i < 4; i++){
+                for (int i = 0; i <lengthMas; i++){
                     cellsMatrix[3][i] = masS[i];
-                return;
                 }
                 break;
 
             case 1:
-                for (int j = 0; j < 4; j++){
+                for (int j = 0; j <lengthMas; j++){
                     cellsMatrix[j][0] = masS[j];
-                return;
                 }
                 break;
 
             case 2:
-                for (int i = 0; i < 4; i++){
+                for (int i = 0; i <lengthMas; i++){
                     cellsMatrix[0][i] = masS[i];
-                return;
                 }
                 break;
 
             case 3:
-                for (int j = 0; j < 4; j++){
+                for (int j = 0; j <lengthMas; j++){
                     cellsMatrix[j][3] = masS[j];
-                return;
                 }
                 break;
         }
