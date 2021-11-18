@@ -128,6 +128,7 @@ public class GameM implements Serializable {
                 player.positionOnRoad++;
             } else {
                 player.positionOnRoad = 0;
+
             }
         }
         roadGame[player.positionOnRoad].action(player);
@@ -208,7 +209,7 @@ public class GameM implements Serializable {
         fieldGame[8][0] = new CompanyCell(1, LIGHT, 0, 150, fieldGame[8][1], null, 150);
         fieldGame[0][5] = new PortCell(2, SHIP, 0, 200, fieldGame[1][5], null, 200, 25, 50, 100, 200);
         fieldGame[5][10] = new PortCell(3, SHIP, 0, 200, fieldGame[5][9], null, 200, 25, 50, 100, 200);
-        fieldGame[10][5] = new PortCell(0, SHIP, 0, 200, fieldGame[9][5], null,200, 25, 50, 100, 200);
+        fieldGame[10][5] = new PortCell(0, SHIP, 0, 200, fieldGame[9][5], null, 200, 25, 50, 100, 200);
         fieldGame[5][0] = new PortCell(1, SHIP, 0, 200, fieldGame[5][1], null, 200, 25, 50, 100, 200);
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
         Italy = new CityCell[3];
@@ -266,6 +267,7 @@ public class GameM implements Serializable {
         for (int i = 10; i >= 0; i--) {
             roadGame[numbrOnRoad] = fieldGame[10][i];
             numbrOnRoad++;
+
         }
         for (int j = 9; j >= 0; j--) {
             roadGame[numbrOnRoad] = fieldGame[j][0];
@@ -275,10 +277,12 @@ public class GameM implements Serializable {
             roadGame[numbrOnRoad] = fieldGame[0][i];
             numbrOnRoad++;
         }
-        for (int j = 9; j >= 1; j--){
+        for (int j = 9; j >= 1; j--) {
             roadGame[numbrOnRoad] = fieldGame[j][10];
             numbrOnRoad++;
-    }
-    }
-}
+        }
 
+
+    }
+
+}

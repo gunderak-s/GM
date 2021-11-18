@@ -26,7 +26,7 @@ public class Cell implements Serializable {
     void resetStatus(char holderChar){
 
     }
-    void drawCellNumberOnRoad(int numberOnRoad){
+    void drawCellNumberOnRoad(int number){
 
     }
     //##################################################################################################################################################

@@ -68,9 +68,9 @@ public class CityCell extends Cell {
 
     }
     //##################################################################################################################################################
-    void drawCellNumberOnRoad(int numbrOnRoad){
-        int number = numbrOnRoad;
-        String r=String.valueOf(number);
+    void drawCellNumberOnRoad(int number){
+        int numb = number;
+        String r=String.valueOf(numb);
         String[] masR=r.split("");
         int lengthMas=masR.length;
         switch (rotation) {
