@@ -1,6 +1,6 @@
 package com.company;
 
-public class CompanyCell extends Cell{
+public class CompanyCell extends Cell {
 
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     String symbol;
@@ -10,7 +10,7 @@ public class CompanyCell extends Cell{
     Player holder;
     Cell helpful;
 
-    public CompanyCell(int rotation, String symbol, int statusRenta, int priceCompany,  Cell helpful , Player holder, int... rentaMas) {
+    public CompanyCell(int rotation, String symbol, int statusRenta, int priceCompany, Cell helpful, Player holder, int... rentaMas) {
         this.rotation = rotation;
         this.symbol = symbol;
         this.statusRenta = statusRenta;
@@ -20,9 +20,9 @@ public class CompanyCell extends Cell{
         this.helpful = helpful;
     }
 
-    void action(Player player){
-        if (statusRenta!=0){
-            player.money =player.money -rentaMas[statusRenta];
+    void action(Player player) {
+        if (statusRenta != 0) {
+            player.money = player.money - rentaMas[statusRenta];
 
         }
 
@@ -31,29 +31,45 @@ public class CompanyCell extends Cell{
 
     void redrawSymbolPlayer(String oldChar, String newChar) {
         /*0-знизу, 1-зліва, 2-згори, 3-справа*/
-        switch (rotation){
+        switch (rotation) {
             case 2:
-        for (int i = 0; i <cellsMatrix.length ; i++) {
-            if (cellsMatrix[2][i] == oldChar) cellsMatrix[2][i] = newChar;
-            break; }
+                for (int i = 0; i < cellsMatrix.length; i++) {
+                    if (cellsMatrix[2][i] == oldChar) {
+                        cellsMatrix[2][i] = newChar;
+                        return;
+                    }
+                    break;
+                }
             case 3:
-                for (int i = 0; i <cellsMatrix.length ; i++) {
-                    if (cellsMatrix[i][1]==oldChar) cellsMatrix[i][1]=newChar;
+                for (int i = 0; i < cellsMatrix.length; i++) {
+                    if (cellsMatrix[i][1] == oldChar) {
+                        cellsMatrix[i][1] = newChar;
+                        return;
+                    }
+                    break;
                 }
             case 0:
-                for (int i = 0; i <cellsMatrix.length ; i++) {
-                    if (cellsMatrix[1][i]==oldChar) cellsMatrix[1][i]=newChar;
+                for (int i = 0; i < cellsMatrix.length; i++) {
+                    if (cellsMatrix[1][i] == oldChar) {
+                        cellsMatrix[1][i] = newChar;
+                        return;
+                    }
+                    break;
                 }
             case 1:
-                for (int i = 0; i <cellsMatrix.length ; i++) {
-                    if (cellsMatrix[i][2]==oldChar) cellsMatrix[i][2]=newChar;
+                for (int i = 0; i < cellsMatrix.length; i++) {
+                    if (cellsMatrix[i][2] == oldChar) {
+                        cellsMatrix[i][2] = newChar;
+                        return;
+                    }
+                    break;
                 }
         }
     }
 
 
     //##################################################################################################################################################
-    void resetStatus(){
+    void resetStatus() {
         //--------------------------------------------------Зміна ренти і запис нової в матрицю-------------------------------------------------------------------
         /*не розумію що тут має робитись*/
         /*int price =rentaMas[statusRenta];
@@ -65,12 +81,13 @@ public class CompanyCell extends Cell{
         //masC[1]=8
         //masC[2]=0
     }
+
     //##################################################################################################################################################
-    void printMatrix(int row){
+    void printMatrix(int row) {
         switch (rotation) {
 
             case 1:
-                System.out.print(cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+ symbol +cellsMatrix[row][3]);
+                System.out.print(cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + symbol + cellsMatrix[row][3]);
                 break;
 
             case 3:
