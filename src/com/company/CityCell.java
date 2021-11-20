@@ -9,8 +9,10 @@ public class CityCell extends Cell {
     final int[] rentaMas;
     Player holder;
     Cell helpful;
+    CityCell[] country;
+
     //##################################################################################################################################################
-    CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful, int ... rentaMas) {
+    CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful,CityCell[] country, int ... rentaMas) {
         this.rotation = rotation;
         this.color = color;
         this.statusRenta = statusRenta;

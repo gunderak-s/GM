@@ -32,20 +32,28 @@ public class PortCell extends Cell{
         switch (rotation){
             case 2:
                 for (int i = 0; i <cellsMatrix.length ; i++) {
-                    if (cellsMatrix[2][i] == oldChar) cellsMatrix[2][i] = newChar;
+                    if (cellsMatrix[2][i] == oldChar) {
+                        cellsMatrix[2][i] = newChar;
+                    return;}
                     break; }
             case 3:
                 for (int i = 0; i <cellsMatrix.length ; i++) {
-                    if (cellsMatrix[i][1]==oldChar) cellsMatrix[i][1]=newChar;
-                }
+                    if (cellsMatrix[i][1]==oldChar) {
+                        cellsMatrix[i][1]=newChar;
+                    return;}
+               break; }
             case 0:
                 for (int i = 0; i <cellsMatrix.length ; i++) {
-                    if (cellsMatrix[1][i]==oldChar) cellsMatrix[1][i]=newChar;
-                }
+                    if (cellsMatrix[1][i]==oldChar) {
+                        cellsMatrix[1][i]=newChar;
+                    return;}
+                break;}
             case 1:
                 for (int i = 0; i <cellsMatrix.length ; i++) {
-                    if (cellsMatrix[i][2]==oldChar) cellsMatrix[i][2]=newChar;
-                }
+                    if (cellsMatrix[i][2]==oldChar) {
+                        cellsMatrix[i][2]=newChar;
+                    return;}
+                break;}
         }
     }
     //##################################################################################################################################################

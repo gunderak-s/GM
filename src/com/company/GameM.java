@@ -4,39 +4,15 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GameM implements Serializable {
-    //---------------------------------------------------Костанти-------------------------------------------------------
-    // темніші рядків
-    public static final String BLACK_BACKGROUND = "\u001B[40m";
-    public static final String RED_BACKGROUND = "\u001B[41m";
-    public static final String GREEN_BACKGROUND = "\u001B[42m";
-    public static final String YELLOW_BACKGROUND = "\u001B[43m";
-    public static final String BLUE_BACKGROUND = "\u001B[44m";
-    public static final String PURPLE_BACKGROUND = "\u001B[45m";
-    public static final String CYAN_BACKGROUND = "\u001B[46m";
-    public static final String WHITE_BACKGROUND = "\u001B[47m";
-    // світліші рядків
-    public static final String GRAY_BACKGROUND = "\u001B[100m";
-    public static final String BRIGHT_RED_BACKGROUND = "\u001B[101m";
-    public static final String BRIGHT_GREEN_BACKGROUND = "\u001B[102m";
-    public static final String BRIGHT_YELLOW_BACKGROUND = "\u001B[103m";
-    public static final String BRIGHT_BLUE_BACKGROUND = "\u001B[104m";
-    public static final String BRIGHT_PURPLE_BACKGROUND = "\u001B[105m";
-    public static final String BRIGHT_CYAN_BACKGROUND = "\u001B[106m";
-    public static final String BRIGHT_WHITE_BACKGROUND = "\u001B[107m";
-    // символів
-    final static String HOUSE = Character.toString(0x2302); // домик
-    final static String SHIP ="\uD83D\uDEA2";/*🚢*/
-    final static String LIGHT="\uD83D\uDCA1";/*💡*/
-    final static String SHOWER="\uD83D\uDEBF";/*🚿*/
+public class GameM implements Serializable, CONSTANTS {
+
     //---------------------------------------------------Поля-------------------------------------------------------
-    final static int SIZE_GAME = 11;
+
     Cell[][] fieldGame;
     Cell[] roadGame;
     int turn;
     int numberOfHouses;
     ArrayList<Player> players;
-    Cell[] Italy;
     Cell[] Netherlands;
     Cell[] England;
     Cell[] Poland;
@@ -51,7 +27,6 @@ public class GameM implements Serializable {
         roadGame = null;
         numberOfHouses = 32;
         players = null;
-        Italy = null;
         turn=0;
     }
     //##################################################################################################################################################
@@ -83,10 +58,7 @@ public class GameM implements Serializable {
                         System.out.println(players.get(selectedNumber - 1).name + " яку клітинку хочете купити? Введіть її номер на дорозі гри");
                         if (scanner.hasNextInt())
                             numberOnRoad = scanner.nextInt();
-                        if (checkAndShopping(numberOnRoad, players.get(selectedNumber - 1)))
-                            System.out.print("покупка здійснена");
-                        else
-                            System.out.print("Неможлива покупка");
+                        roadGame[numberOnRoad].purchase(players.get(selectedNumber),numberOnRoad);
                         continue;
                     default:
                         System.out.print("Некоректне значення");
@@ -94,15 +66,17 @@ public class GameM implements Serializable {
                 }
             }
             //--------------------------------------------------Хід гравця----------------------------------------------------------------------------------
-            cube1 = (int) (Math.random() * 6) + 1;
-            cube2 = (int) (Math.random() * 6) + 1;
-            move(players.get(turn), cube1 + cube2);
+            players.get(turn).throwDice();
+            if (roadGame[players.get(turn).positionOnRoad].playerFromCell(players.get(turn))){
+                players.get(turn).move(roadGame.length);
+                roadGame[players.get(turn).positionOnRoad].playerIntoCell(players.get(turn));
+            }
             //--------------------------------------------------Видалення поточного гравця, якщо став банкротом---------------------------------------------
             if (players.get(turn).money < 0) {
                 System.out.println("Ви стали банкротом" + players.get(turn).name);
                 players.remove(turn);
             }
-            if (cube1 == cube2)
+            if (players.get(turn).identicalCubes())
                 System.out.println("Киньте кубики ще раз" + players.get(turn).name);
                 //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
             else {
@@ -116,20 +90,6 @@ public class GameM implements Serializable {
         System.out.println("Вітаємо з перемогою" + players.get(turn).name + "!");
     }
 
-    //##################################################################################################################################################
-    void move(Player player, int cube) {
-        roadGame[player.positionOnRoad].redrawSymbolPlayer(player.symbol, " ");
-        for (int i = 0; i < cube; i++)
-            if (player.positionOnRoad != 40) player.positionOnRoad++;
-            else player.positionOnRoad = 0;
-        roadGame[player.positionOnRoad].action(player);
-    }
-
-    //##################################################################################################################################################
-    boolean checkAndShopping(int numberOnRoad, Player player) {
-
-        return true;
-    }
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
@@ -156,7 +116,7 @@ public class GameM implements Serializable {
     //##################################################################################################################################################
     void printField() {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)
-            for (int i = 0; i < Cell.SIZE_CELLS; i++) {
+            for (int i = 0; i < SIZE_CELLS; i++) {
                 for (int j = 0; j < SIZE_GAME; j++)
                     fieldGame[rowCells][j].printMatrix(i);
                 System.out.println(BLACK_BACKGROUND);
@@ -171,9 +131,14 @@ public class GameM implements Serializable {
             for (int j = 0; j <= 10; j++)
                 fieldGame[i][j] = new Cell();
         //---------------------------------------------Заповнення CityCell клітинок---------------------------------------------------------------------
-        fieldGame[0][1] = new CityCell("Вене", 2, RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][1], 220, 18, 90, 250, 700, 875, 1050);
-        fieldGame[0][3] = new CityCell("Міла", 2, RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][3], 220, 18, 90, 250, 700, 875, 1050);
-        fieldGame[0][4] = new CityCell("Барі", 2, GameM.RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][4], 240, 20, 100, 300, 750, 925, 1100);
+        CityCell[] Italy = new CityCell[3];
+        fieldGame[0][1] = new CityCell("Вн", 2, RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][1],Italy, 220, 18, 90, 250, 700, 875, 1050);
+        fieldGame[0][3] = new CityCell("Мл", 2, RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][3],Italy, 220, 18, 90, 250, 700, 875, 1050);
+        fieldGame[0][4] = new CityCell("Барі", 2, GameM.RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][4],Italy, 240, 20, 100, 300, 750, 925, 1100);
+        Italy[0] = (CityCell) fieldGame[0][1];
+        Italy[1] = (CityCell)fieldGame[0][3];
+        Italy[2] = (CityCell)fieldGame[0][4];
+
         fieldGame[0][6] = new CityCell("Амст", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][6], 260, 22, 110, 330, 800, 975, 1150);
         fieldGame[0][7] = new CityCell("Горн", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][7], 260, 22, 110, 330, 800, 975, 1150);
         fieldGame[0][9] = new CityCell("Лісе", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][9], 280, 24, 120, 360, 850, 1025, 1200);
@@ -262,10 +227,7 @@ public class GameM implements Serializable {
 
 
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
-        Italy = new CityCell[3];
-        Italy[0] = fieldGame[0][1];
-        Italy[1] = fieldGame[0][3];
-        Italy[2] = fieldGame[0][4];
+
 
         Netherlands = new CityCell[3];
         Netherlands[0] = fieldGame[0][6];

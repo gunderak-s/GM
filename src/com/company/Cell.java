@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Cell implements Serializable {
     String[][] cellsMatrix;
-    final static int SIZE_CELLS =4;
     //##################################################################################################################################################
     Cell() {
         cellsMatrix = new String[][]{
@@ -14,24 +13,48 @@ public class Cell implements Serializable {
                 {" ", " ", " ", " "}
         };
     }
+    Cell(String [][] cellsMatrix) {
+        this.cellsMatrix=cellsMatrix;
+    }
     //##################################################################################################################################################
-    void action(Player player){
+    boolean playerFromCell(Player player){
+        redrawSymbolPlayer(player.symbol," ");
+        return true;
+    }
+    //##################################################################################################################################################
+    void playerIntoCell(Player player){
+        redrawSymbolPlayer(" ",player.symbol);
+    }
+    //##################################################################################################################################################
+    void redrawSymbolPlayer(String prevChar, String newChar){
+        for (int i=0;i<4;i++)
+            for (int j=0;j<4;j++)
+                if (cellsMatrix[i][j].equals(prevChar)) {
+                    cellsMatrix[i][j] = newChar;
+                    return;
+                }
+    }
+    //##################################################################################################################################################
+    void purchase(Player player, int numberCell){
+    }
+    //##################################################################################################################################################
+    void  setHolder(Player player){
 
     }
     //##################################################################################################################################################
-    void redrawSymbolPlayer(String oldChar, String newChar) {
+    void drawTextIntoCell(String text,int row, boolean helpful){
 
     }
     //##################################################################################################################################################
-    void  setHolder(Player holder){
-
-    }
-    //##################################################################################################################################################
-    void resetStatus(){
-
+    float getPrice(){
+        return  0;
     }
     //##################################################################################################################################################
     void printMatrix(int row){
         System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
+    }
+    //##################################################################################################################################################
+    public void printInfo() {
+
     }
 }
