@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 public class Cell implements Serializable {
     String[][] cellsMatrix;
-    final static int SIZE_CELLS =4;
     //##################################################################################################################################################
     Cell() {
         cellsMatrix = new String[][]{

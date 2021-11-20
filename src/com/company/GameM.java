@@ -4,33 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class GameM implements Serializable {
-    //---------------------------------------------------Костанти-------------------------------------------------------
-    // темніші рядків
-    public static final String BLACK_BACKGROUND = "\u001B[40m";
-    public static final String RED_BACKGROUND = "\u001B[41m";
-    public static final String GREEN_BACKGROUND = "\u001B[42m";
-    public static final String YELLOW_BACKGROUND = "\u001B[43m";
-    public static final String BLUE_BACKGROUND = "\u001B[44m";
-    public static final String PURPLE_BACKGROUND = "\u001B[45m";
-    public static final String CYAN_BACKGROUND = "\u001B[46m";
-    public static final String WHITE_BACKGROUND = "\u001B[47m";
-    // світліші рядків
-    public static final String GRAY_BACKGROUND = "\u001B[100m";
-    public static final String BRIGHT_RED_BACKGROUND = "\u001B[101m";
-    public static final String BRIGHT_GREEN_BACKGROUND = "\u001B[102m";
-    public static final String BRIGHT_YELLOW_BACKGROUND = "\u001B[103m";
-    public static final String BRIGHT_BLUE_BACKGROUND = "\u001B[104m";
-    public static final String BRIGHT_PURPLE_BACKGROUND = "\u001B[105m";
-    public static final String BRIGHT_CYAN_BACKGROUND = "\u001B[106m";
-    public static final String BRIGHT_WHITE_BACKGROUND = "\u001B[107m";
-    // символів
-    final static String HOUSE = Character.toString(0x2302); // домик
-    final static String SHIP ="\uD83D\uDEA2";/*🚢*/
-    final static String LIGHT="\uD83D\uDCA1";/*💡*/
-    final static String SHOWER="\uD83D\uDEBF";/*🚿*/
+public class GameM implements Serializable, CONSTANTS {
+
     //---------------------------------------------------Поля-------------------------------------------------------
-    final static int SIZE_GAME = 11;
+
     Cell[][] fieldGame;
     Cell[] roadGame;
     int turn;
@@ -160,7 +137,7 @@ public class GameM implements Serializable {
     //##################################################################################################################################################
     void printField() {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)
-            for (int i = 0; i < Cell.SIZE_CELLS; i++) {
+            for (int i = 0; i < SIZE_CELLS; i++) {
                 for (int j = 0; j < SIZE_GAME; j++)
                     fieldGame[rowCells][j].printMatrix(i);
                 System.out.println(BLACK_BACKGROUND);
