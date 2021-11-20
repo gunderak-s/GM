@@ -75,25 +75,25 @@ public class CityCell extends Cell {
         int lengthMas=masR.length;
         switch (rotation) {
             case 0:
-                for (int i = 1; i <lengthMas; i++){
+                for (int i = 1; i <lengthMas+1; i++){
                     helpful.cellsMatrix[3][i] = masR[i-1];
                 }
                 break;
 
             case 1:
-                for (int j = 1; j <lengthMas; j++){
+                for (int j = 1; j <lengthMas+1; j++){
                     helpful.cellsMatrix[j][0] = masR[j-1];
                 }
                 break;
 
             case 2:
-                for (int i = 1; i <lengthMas; i++){
+                for (int i = 1; i <lengthMas+1; i++){
                     helpful.cellsMatrix[0][i] = masR[i-1];
                 }
                 break;
 
             case 3:
-                for (int j = 1; j <lengthMas; j++){
+                for (int j = 1; j <lengthMas+1; j++){
                     helpful.cellsMatrix[j][3] = masR[j-1];
                 }
                 break;

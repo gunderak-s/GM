@@ -266,19 +266,23 @@ public class GameM implements Serializable {
         int numbrOnRoad = 0;
         for (int i = 10; i >= 0; i--) {
             roadGame[numbrOnRoad] = fieldGame[10][i];
+            roadGame[numbrOnRoad].drawCellNumberOnRoad(numbrOnRoad);
             numbrOnRoad++;
 
         }
         for (int j = 9; j >= 0; j--) {
             roadGame[numbrOnRoad] = fieldGame[j][0];
+            roadGame[numbrOnRoad].drawCellNumberOnRoad(numbrOnRoad);
             numbrOnRoad++;
         }
-        for (int i = 10; i >= 1; i--) {
+        for (int i = 1; i <= 10; i++) {
             roadGame[numbrOnRoad] = fieldGame[0][i];
+            roadGame[numbrOnRoad].drawCellNumberOnRoad(numbrOnRoad);
             numbrOnRoad++;
         }
-        for (int j = 9; j >= 1; j--) {
+        for (int j = 1; j <= 9; j++) {
             roadGame[numbrOnRoad] = fieldGame[j][10];
+            roadGame[numbrOnRoad].drawCellNumberOnRoad(numbrOnRoad);
             numbrOnRoad++;
         }
 
