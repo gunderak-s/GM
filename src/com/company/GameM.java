@@ -89,6 +89,7 @@ public class GameM implements Serializable, CONSTANTS {
 
         System.out.println("Вітаємо з перемогою" + players.get(turn).name + "!");
     }
+
     //##################################################################################################################################################
     void setPlayers() {
         players = new ArrayList<Player>();
@@ -158,6 +159,57 @@ public class GameM implements Serializable, CONSTANTS {
         fieldGame[10][7] = new CityCell("Манч", 0, GameM.CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][7], 60, 4, 20, 60, 180, 320, 450);
         fieldGame[10][9] = new CityCell("Лонд", 0, CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][9], 60, 2, 10, 30, 90, 160, 250);
         //---------------------------------------------Заповнення клітинок інших ігрових класів---------------------------------------------------------------------
+        Chance[] chances = new Chance[13];
+        chances[0] = (player) -> {
+            roadGame[39].redrawSymbolPlayer(" ", player.symbol);
+            player.positionOnRoad = 39;
+            roadGame[39].playerIntoCell(player);
+        };
+        chances[1] = (player) -> {
+            roadGame[0].redrawSymbolPlayer(" ", player.symbol);
+            player.positionOnRoad = 0;
+            roadGame[0].playerIntoCell(player);
+        };
+        chances[2] = (player) -> player.awayFromPrisonCell++;
+
+        chances[3] = (player) -> {
+            if (player.positionOnRoad == 36) player.money = player.money + 200;
+            roadGame[25].redrawSymbolPlayer(" ", player.symbol);
+            player.positionOnRoad = 25;
+            roadGame[25].playerIntoCell(player);
+        };
+        chances[4] = (player) -> player.money = player.money - 15;
+        chances[5] = (player) -> player.money = player.money + 150;
+
+
+
+        chances[6] = (player) -> {
+            if (player.positionOnRoad != 7) player.money = player.money + 200;
+            roadGame[15].redrawSymbolPlayer(" ", player.symbol);
+            player.positionOnRoad = 15;
+            roadGame[15].playerIntoCell(player);
+
+        };
+        chances[7] = (player) -> player.money = player.money + 50;
+        chances[8] = (player) -> player.money = player.money - 20;
+        chances[9] = (player) -> player.money = player.money - 150;
+        chances[10] = (player) -> player.money = player.money + 100;
+
+        chances[11] = (player) -> {
+            player.money = player.money + 200;
+            roadGame[15].redrawSymbolPlayer(" ", player.symbol);
+            player.positionOnRoad = 15;
+            roadGame[15].playerIntoCell(player);
+        };
+
+        chances[12] = (player) -> {
+            player.positionOnRoad = player.positionOnRoad - 3;
+            roadGame[player.positionOnRoad].redrawSymbolPlayer(" ", player.symbol);
+            roadGame[player.positionOnRoad].playerIntoCell(player);
+        };
+        ChanceRealisedCell chanceRealisedCell = new ChanceRealisedCell(chances);
+
+
 
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
 

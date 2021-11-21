@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Player implements Serializable {
+    int awayFromPrisonCell;
     String name;
     String symbol;
     int money;
@@ -19,6 +20,7 @@ public class Player implements Serializable {
         this.symbol=symbol;
         money=1500;
         positionOnRoad=0;
+        awayFromPrisonCell=0;
         ownership=new ArrayList<>();
     }
     //##################################################################################################################################################
