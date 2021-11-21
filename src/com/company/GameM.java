@@ -20,6 +20,8 @@ public class GameM implements Serializable, CONSTANTS {
     Cell[] Ukraine;
     Cell[] Norway;
     Cell[] Czech;
+    Cell[] Port;
+    Cell[] Company;
 
     //##################################################################################################################################################
     GameM() {
@@ -32,7 +34,7 @@ public class GameM implements Serializable, CONSTANTS {
     //##################################################################################################################################################
     void game(boolean newGame) {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
-        if (newGame){
+        if (newGame) {
             setField();
             setPlayers();
         }
@@ -41,8 +43,8 @@ public class GameM implements Serializable, CONSTANTS {
         int selectedNumber;
         int numberOnRoad = 0;
         Scanner scanner = new Scanner(System.in);
-        for (int i=0;i< players.size();i++)
-            roadGame[0].redrawSymbolPlayer(" ",players.get(i).symbol);
+        for (int i = 0; i < players.size(); i++)
+            roadGame[0].redrawSymbolPlayer(" ", players.get(i).symbol);
         while (players.size() > 1) {
             printField();
             //--------------------------------------------------Діалог----------------------------------------------------------------------------------
@@ -113,6 +115,7 @@ public class GameM implements Serializable, CONSTANTS {
         scanner.close();
         */
     }
+
     //##################################################################################################################################################
     void printField() {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)

@@ -45,6 +45,9 @@ public class Cell implements Serializable {
     void drawTextIntoCell(String text,int row, boolean helpful){
 
     }
+    void drawCellNumberOnRoad(int number){
+
+    }
     //##################################################################################################################################################
     float getPrice(){
         return  0;
