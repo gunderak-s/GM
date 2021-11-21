@@ -4,19 +4,18 @@ public class PortCell extends Cell{
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     String symbol;
     int statusRenta;
-    int priceCompany;
-    final int[] rentaMas;
+    final  int[] rentaMas;
     Player holder;
     Cell helpful;
+    PortCell[] port;
 
-    public PortCell(int rotation, String symbol, int statusRenta, int priceCompany,  Cell helpful , Player holder, int... rentaMas) {
+    public PortCell(int rotation,  int statusRenta, Cell helpful , Player holder,PortCell[] port int ... rentaMas) {
         this.rotation = rotation;
-        this.symbol = symbol;
         this.statusRenta = statusRenta;
-        this.priceCompany = priceCompany;
-        this.rentaMas = rentaMas;
-        this.holder = holder;
         this.helpful = helpful;
+        this.holder = holder;
+        this.port=port;
+        this.rentaMas = rentaMas;
     }
 
     void action(Player player){

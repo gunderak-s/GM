@@ -20,46 +20,13 @@ public class CityCell extends Cell {
         this.priceHotel = priceHotel;
         this.holder = holder;
         this.helpful = helpful;
+        this.country=country;
         this.rentaMas = rentaMas;
         //---------------------------------------------------Записати статус, просто викликавши redrawStatus()-------------------------------------------------------
-
+        drawTextIntoCell();
         //---------------------------------------------------Записати назву, аналогічно як в resetStatus()-------------------------------------------------------
 
-            String[] n = name.split("");
-
-            switch (rotation) {
-                case 0:
-                    for (int i = 0; i < 4; i++) {
-                        cellsMatrix[1][i] = n.toString();
-                        return;
-                    }
-                    break;
-
-                case 1:
-                    for (int j = 0; j < 4; j++) {
-                        cellsMatrix[j][2] = n.toString();
-                        return;
-                    }
-                    break;
-
-
-                case 2:
-                    for (int i = 0; i < 4; i++) {
-                        cellsMatrix[2][i] = n.toString();
-                        return;
-                    }
-                    break;
-
-                case 3:
-                    for (int j = 0; j < 4; j++) {
-                        cellsMatrix[j][1] = n.toString();
-                        return;
-                    }
-                    break;
-            }
-
-        }
-
+    }
     //##################################################################################################################################################
     void action(Player player){
         if (statusRenta!=0){
@@ -77,45 +44,37 @@ public class CityCell extends Cell {
 
     }
     //##################################################################################################################################################
-    void  resetStatus(){
-        //--------------------------------------------------Зміна ренти-------------------------------------------------------------------------------
-
-        //--------------------------------------------------Запис нової ренти в матрицю-------------------------------------------------------------------------------
-        int price =rentaMas[statusRenta];
-        String s=String.valueOf(price);
-        String[] masS=s.split("");
-        //int lengthMas=masC.length;
-
+    void drawTextIntoCell(String text, int row, boolean inHelpful){
+        Cell cell;
+        if (inHelpful)
+            cell=helpful;
+        else
+            cell=this;
+        if (text.length()<CONSTANTS.SIZE_CELLS);
+            for (int i=0; i<4-CONSTANTS.SIZE_CELLS.length();i++)
+                text=text+" ";
+        String[] textInMas = text.split("");
         switch (rotation) {
             case 0:
-                for (int i = 0; i < 4; i++){
-                    cellsMatrix[3][i] = masS[i];
-                return;
-                }
+                cell.cellsMatrix[row][0]=" ";
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<textInMas.length); i++)
+                    cell.cellsMatrix[row][CONSTANTS.SIZE_CELLS] = textInMas[textInMas.length];
                 break;
-
             case 1:
-                for (int j = 0; j < 4; j++){
-                    cellsMatrix[j][0] = masS[j];
-                return;
-                }
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<textInMas.length); i++)
+                    cell.cellsMatrix[CONSTANTS.SIZE_CELLS][row] = textInMas[textInMas.length];
                 break;
-
             case 2:
-                for (int i = 0; i < 4; i++){
-                    cellsMatrix[0][i] = masC.toString();
-                return;
-                }
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<textInMas.length); i++)
+                    cell.cellsMatrix[row][CONSTANTS.SIZE_CELLS] = textInMas[textInMas.length];
                 break;
-
             case 3:
-                for (int j = 0; j < 4; j++){
-                    cellsMatrix[j][3] = masC.toString();
-                return;
-                }
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<textInMas.length); i++)
+                    cell.cellsMatrix[CONSTANTS.SIZE_CELLS][row] = textInMas[textInMas.length];
                 break;
         }
-    }
+        }
+
     //##################################################################################################################################################
     void printMatrix(int row){
         switch (rotation) {

@@ -3,21 +3,19 @@ package com.company;
 public class CompanyCell extends Cell {
 
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
-    String symbol;
     int statusRenta;
-    int priceCompany;
     final int[] rentaMas;
     Player holder;
     Cell helpful;
+    CompanyCell[] com;
 
-    public CompanyCell(int rotation, String symbol, int statusRenta, int priceCompany, Cell helpful, Player holder, int... rentaMas) {
+    public CompanyCell(int rotation,  int statusRenta,  Cell helpful, Player holder,CompanyCell[] com, int... rentaMas) {
         this.rotation = rotation;
-        this.symbol = symbol;
         this.statusRenta = statusRenta;
-        this.priceCompany = priceCompany;
-        this.rentaMas = rentaMas;
         this.holder = holder;
         this.helpful = helpful;
+        this.com = com;
+        this.rentaMas = rentaMas;
     }
 
     void action(Player player) {
