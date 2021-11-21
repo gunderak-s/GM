@@ -83,7 +83,7 @@ public class CompanyCell extends Cell {
     }
 
     //##################################################################################################################################################
-    void printMatrix(int row) {
+    void printRow(int row) {
         switch (rotation) {
 
             case 1:

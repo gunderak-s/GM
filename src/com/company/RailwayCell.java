@@ -54,7 +54,7 @@ public class RailwayCell extends Cell{
 
     }
     //##################################################################################################################################################
-    void printMatrix(int row){
+    void printRow(int row){
         System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
     }
 }

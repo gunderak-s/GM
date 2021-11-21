@@ -118,7 +118,7 @@ public class GameM implements Serializable, CONSTANTS {
         for (int rowCells = 0; rowCells < SIZE_GAME; rowCells++)
             for (int i = 0; i < SIZE_CELLS; i++) {
                 for (int j = 0; j < SIZE_GAME; j++)
-                    fieldGame[rowCells][j].printMatrix(i);
+                    fieldGame[rowCells][j].printRow(i);
                 System.out.println(BLACK_BACKGROUND);
             }
     }
