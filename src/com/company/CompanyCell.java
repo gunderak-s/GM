@@ -1,7 +1,9 @@
 package com.company;
 
-public class CompanyCell extends Cell {
+import java.io.Serializable;
 
+public class CompanyCell extends Cell{
+    //################################################  ОЛЕНА  ##################################################################################################
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     String symbol;
     int statusRenta;
@@ -9,7 +11,7 @@ public class CompanyCell extends Cell {
     final int[] rentaMas;
     Player holder;
     Cell helpful;
-
+    //################################################  ОЛЕНА  ##################################################################################################
     public CompanyCell(int rotation, String symbol, int statusRenta, int priceCompany, Cell helpful, Player holder, int... rentaMas) {
         this.rotation = rotation;
         this.symbol = symbol;
@@ -19,16 +21,16 @@ public class CompanyCell extends Cell {
         this.holder = holder;
         this.helpful = helpful;
     }
-
-    void action(Player player) {
-        if (statusRenta != 0) {
-            player.money = player.money - rentaMas[statusRenta];
-
-        }
-
+    //################################################  ОЛЕНА  ##################################################################################################
+    boolean playerFromCell(Player player){
+        redrawSymbolPlayer(player.symbol," ");
+        return true;
     }
-    //##################################################################################################################################################
-
+    //################################################  ОЛЕНА  ##################################################################################################
+    void playerIntoCell(Player player){
+        redrawSymbolPlayer(" ",player.symbol);
+    }
+    //################################################  ОЛЕНА  ##################################################################################################
     void redrawSymbolPlayer(String oldChar, String newChar) {
         /*0-знизу, 1-зліва, 2-згори, 3-справа*/
         switch (rotation) {
@@ -66,24 +68,23 @@ public class CompanyCell extends Cell {
                 }
         }
     }
-
-
-    //##################################################################################################################################################
-    void resetStatus() {
-        //--------------------------------------------------Зміна ренти і запис нової в матрицю-------------------------------------------------------------------
-        /*не розумію що тут має робитись*/
-        /*int price =rentaMas[statusRenta];
-        String s=String.valueOf(price);
-        char[] masC=s.toCharArray();
-        int lengthMas=masC.length;*/
-
-        //masC[0]=2
-        //masC[1]=8
-        //masC[2]=0
+    //###############################################  МІША  ###################################################################################################
+    void purchase(Player player, int numberCell){
     }
+    //###############################################  ОЛЕНА  ###################################################################################################
+    void  setHolder(Player player){
 
+    }
+    //###############################################  ОЛЕНА  ###################################################################################################
+    void drawTextIntoCell(String text,int row, boolean helpful){
+
+    }
+    //###############################################  ВОВА  ###################################################################################################
+    float getPrice(){
+        return  0;
+    }
     //##################################################################################################################################################
-    void printRow(int row) {
+    public void printRow(int row) {
         switch (rotation) {
 
             case 1:
@@ -94,6 +95,10 @@ public class CompanyCell extends Cell {
                 System.out.print(symbol + cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
                 break;
         }
+    }
+    //##############################################  АНДРІЙ  ####################################################################################################
+    public void printInfo() {
+
     }
 }
 
