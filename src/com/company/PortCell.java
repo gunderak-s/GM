@@ -1,31 +1,36 @@
 package com.company;
 
+import java.io.Serializable;
+
 public class PortCell extends Cell{
+    //#################################################  ОЛЕНА  #################################################################################################
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     String symbol;
     int statusRenta;
-    final  int[] rentaMas;
+    int priceCompany;
+    final int[] rentaMas;
     Player holder;
     Cell helpful;
-    PortCell[] port;
-
-    public PortCell(int rotation,  int statusRenta, Cell helpful , Player holder,PortCell[] port int ... rentaMas) {
+    //#################################################  ОЛЕНА  #################################################################################################
+    public PortCell(int rotation, String symbol, int statusRenta, int priceCompany,  Cell helpful , Player holder, int... rentaMas) {
         this.rotation = rotation;
+        this.symbol = symbol;
         this.statusRenta = statusRenta;
-        this.helpful = helpful;
-        this.holder = holder;
-        this.port=port;
+        this.priceCompany = priceCompany;
         this.rentaMas = rentaMas;
+        this.holder = holder;
+        this.helpful = helpful;
     }
-
-    void action(Player player){
-        if (statusRenta!=0){
-            player.money =player.money -rentaMas[statusRenta];
-
-        }
-
+    //#################################################  ОЛЕНА  #################################################################################################
+    boolean playerFromCell(Player player){
+        redrawSymbolPlayer(player.symbol," ");
+        return true;
     }
-    //##################################################################################################################################################
+    //#################################################  ОЛЕНА  #################################################################################################
+    void playerIntoCell(Player player){
+        redrawSymbolPlayer(" ",player.symbol);
+    }
+    //#################################################  ОЛЕНА  #################################################################################################
     void redrawSymbolPlayer(String oldChar, String newChar){
         /*0-знизу, 1-зліва, 2-згори, 3-справа*/
         switch (rotation){
@@ -55,21 +60,23 @@ public class PortCell extends Cell{
                 break;}
         }
     }
-    //##################################################################################################################################################
-    void resetStatus(){
-    //--------------------------------------------------Зміна ренти і запис нової в матрицю-------------------------------------------------------------------
-        /*не розумію що тут має робитись*/
-        /*int price =rentaMas[statusRenta];
-        String s=String.valueOf(price);
-        char[] masC=s.toCharArray();
-        int lengthMas=masC.length;*/
+    //##############################################  МІША  ####################################################################################################
+    void purchase(Player player, int numberCell){
+    }
+    //##############################################  ОЛЕНА  ####################################################################################################
+    void setHolder(Player player){
 
-        //masC[0]=2
-        //masC[1]=8
-        //masC[2]=0
+    }
+    //##############################################  ОЛЕНА  ####################################################################################################
+    void drawTextIntoCell(String text,int row, boolean helpful){
+
+    }
+    //##############################################  ВОВА  ####################################################################################################
+    float getPrice(){
+        return  0;
     }
     //##################################################################################################################################################
-    void printMatrix(int row){
+    public void printRow(int row){
         switch (rotation) {
             case 0:
                 switch (row) {
@@ -97,5 +104,9 @@ public class PortCell extends Cell{
                 System.out.print(symbol + cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
                 break;
         }
+    }
+    //##################################################  АНДРІЙ  ################################################################################################
+    public void printInfo() {
+
     }
 }
