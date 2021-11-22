@@ -12,7 +12,7 @@ public class CityCell extends Cell{
     Cell helpful;
     CityCell[] country;
     //############################################  ОЛЕНА  ######################################################################################################
-    CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful,CityCell[] country, int ... rentaMas) {
+    CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful,Cell[] country, int ... rentaMas) {
         this.rotation = rotation;
         this.color = color;
         this.statusRenta = statusRenta;
@@ -53,6 +53,7 @@ public class CityCell extends Cell{
         int price =rentaMas[statusRenta];
         String s=String.valueOf(price);
         String[] masS=s.split("");
+        String[] masC=s.split("");
         //int lengthMas=masC.length;
 
         switch (rotation) {

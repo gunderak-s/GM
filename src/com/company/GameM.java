@@ -11,6 +11,7 @@ public class GameM implements Serializable, CONSTANTS {
     int turn;
     int numberOfHouses;
     ArrayList<Player> players;
+    Cell[] Italy;
     Cell[] Netherlands;
     Cell[] England;
     Cell[] Poland;
@@ -126,33 +127,65 @@ public class GameM implements Serializable, CONSTANTS {
             for (int j = 0; j <= 10; j++)
                 fieldGame[i][j] = new Cell();
         //---------------------------------------------Заповнення CityCell клітинок - ОЛЕНА ---------------------------------------------------------------------
-        CityCell[] Italy = new CityCell[3];
+        Italy= new CityCell[3];
         fieldGame[0][1] = new CityCell("Вн", 2, RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][1],Italy, 220, 18, 90, 250, 700, 875, 1050);
         fieldGame[0][3] = new CityCell("Мл", 2, RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][3],Italy, 220, 18, 90, 250, 700, 875, 1050);
-        fieldGame[0][4] = new CityCell("Барі", 2, GameM.RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][4],Italy, 240, 20, 100, 300, 750, 925, 1100);
-        Italy[0] = (CityCell) fieldGame[0][1];
-        Italy[1] = (CityCell)fieldGame[0][3];
-        Italy[2] = (CityCell)fieldGame[0][4];
+        fieldGame[0][4] = new CityCell("Бр", 2, GameM.RED_BACKGROUND, 0, 150, 150, null, fieldGame[1][4],Italy, 240, 20, 100, 300, 750, 925, 1100);
+        Italy[0] = fieldGame[0][1];
+        Italy[1] = fieldGame[0][3];
+        Italy[2] = fieldGame[0][4];
 
-        fieldGame[0][6] = new CityCell("Амст", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][6], 260, 22, 110, 330, 800, 975, 1150);
-        fieldGame[0][7] = new CityCell("Горн", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][7], 260, 22, 110, 330, 800, 975, 1150);
-        fieldGame[0][9] = new CityCell("Лісе", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][9], 280, 24, 120, 360, 850, 1025, 1200);
-        fieldGame[1][10] = new CityCell("Кріс", 3, GameM.BLUE_BACKGROUND, 0, 200, 200, null, fieldGame[1][9], 300, 26, 130, 390, 900, 1100, 1275);
-        fieldGame[2][10] = new CityCell("Шієн", 3, GameM.BLUE_BACKGROUND, 0, 200, 200, null, fieldGame[2][9], 300, 26, 130, 390, 900, 1100, 1275);
-        fieldGame[4][10] = new CityCell("Осло", 3, GameM.BLUE_BACKGROUND, 0, 200, 200, null, fieldGame[4][9], 320, 28, 150, 450, 1000, 1200, 1400);
-        fieldGame[7][10] = new CityCell("Льві", 3, GameM.GRAY_BACKGROUND, 0, 200, 200, null, fieldGame[7][9], 350, 35, 175, 500, 1100, 1300, 1500);
-        fieldGame[9][10] = new CityCell("Київ", 3, GameM.GRAY_BACKGROUND, 0, 200, 200, null, fieldGame[9][9], 400, 50, 200, 600, 1400, 1700, 2000);
-        fieldGame[1][0] = new CityCell("Праг", 1, GameM.GREEN_BACKGROUND, 0, 100, 100, null, fieldGame[1][1], 200, 16, 80, 220, 600, 800, 1000);
-        fieldGame[2][0] = new CityCell("Злін", 1, GameM.GREEN_BACKGROUND, 0, 100, 100, null, fieldGame[2][1], 180, 14, 70, 200, 550, 750, 950);
-        fieldGame[4][0] = new CityCell("Брно", 1, GameM.GREEN_BACKGROUND, 0, 100, 100, null, fieldGame[4][1], 180, 14, 70, 200, 550, 750, 950);
-        fieldGame[6][0] = new CityCell("Като", 1, GameM.BRIGHT_RED_BACKGROUND, 0, 100, 100, null, fieldGame[6][1], 160, 12, 60, 180, 500, 700, 900);
-        fieldGame[7][0] = new CityCell("Опол", 1, GameM.BRIGHT_RED_BACKGROUND, 0, 100, 100, null, fieldGame[7][1], 140, 10, 50, 150, 450, 625, 750);
-        fieldGame[9][0] = new CityCell("Вроц", 1, GameM.BRIGHT_RED_BACKGROUND, 0, 100, 100, null, fieldGame[9][1], 140, 10, 50, 150, 450, 625, 750);
-        fieldGame[10][1] = new CityCell("Нант", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][1], 120, 8, 40, 100, 300, 450, 600);
-        fieldGame[10][2] = new CityCell("Парж", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][2], 100, 6, 30, 90, 270, 400, 550);
-        fieldGame[10][4] = new CityCell("Ліон", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][4], 100, 6, 30, 90, 270, 400, 550);
-        fieldGame[10][7] = new CityCell("Манч", 0, GameM.CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][7], 60, 4, 20, 60, 180, 320, 450);
-        fieldGame[10][9] = new CityCell("Лонд", 0, CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][9], 60, 2, 10, 30, 90, 160, 250);
+        Netherlands = new CityCell[3];
+        fieldGame[0][6] = new CityCell("Ам", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][6],Netherlands,260, 22, 110, 330, 800, 975, 1150);
+        fieldGame[0][7] = new CityCell("Го", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][7],Netherlands, 260, 22, 110, 330, 800, 975, 1150);
+        fieldGame[0][9] = new CityCell("Лі", 2, GameM.PURPLE_BACKGROUND, 0, 150, 150, null, fieldGame[1][9],Netherlands,280, 24, 120, 360, 850, 1025, 1200);
+        Netherlands[0] = fieldGame[0][6];
+        Netherlands[1] = fieldGame[0][7];
+        Netherlands[2] = fieldGame[0][9];
+
+        Norway = new CityCell[3];
+        fieldGame[1][10] = new CityCell("Кр", 3, GameM.BLUE_BACKGROUND, 0, 200, 200, null, fieldGame[1][9],Norway, 300, 26, 130, 390, 900, 1100, 1275);
+        fieldGame[2][10] = new CityCell("Шн", 3, GameM.BLUE_BACKGROUND, 0, 200, 200, null, fieldGame[2][9],Norway, 300, 26, 130, 390, 900, 1100, 1275);
+        fieldGame[4][10] = new CityCell("Ос", 3, GameM.BLUE_BACKGROUND, 0, 200, 200, null, fieldGame[4][9],Norway, 320, 28, 150, 450, 1000, 1200, 1400);
+        Norway[0] = fieldGame[1][10];
+        Norway[1] = fieldGame[2][10];
+        Norway[2] = fieldGame[4][10];
+
+        Ukraine = new CityCell[2];
+        fieldGame[7][10] = new CityCell("Лв", 3, GameM.GRAY_BACKGROUND, 0, 200, 200, null, fieldGame[7][9],Ukraine, 350, 35, 175, 500, 1100, 1300, 1500);
+        fieldGame[9][10] = new CityCell("Кв", 3, GameM.GRAY_BACKGROUND, 0, 200, 200, null, fieldGame[9][9],Ukraine, 400, 50, 200, 600, 1400, 1700, 2000);
+        Ukraine[0] = fieldGame[7][10];
+        Ukraine[1] = fieldGame[9][10];
+
+        Czech = new CityCell[3];
+        fieldGame[1][0] = new CityCell("Пр", 1, GameM.GREEN_BACKGROUND, 0, 100, 100, null, fieldGame[1][1],Czech, 200, 16, 80, 220, 600, 800, 1000);
+        fieldGame[2][0] = new CityCell("Зл", 1, GameM.GREEN_BACKGROUND, 0, 100, 100, null, fieldGame[2][1],Czech, 180, 14, 70, 200, 550, 750, 950);
+        fieldGame[4][0] = new CityCell("Бр", 1, GameM.GREEN_BACKGROUND, 0, 100, 100, null, fieldGame[4][1],Czech, 180, 14, 70, 200, 550, 750, 950);
+        Czech[0] = fieldGame[1][0];
+        Czech[1] = fieldGame[2][0];
+        Czech[2] = fieldGame[4][0];
+
+        Poland = new CityCell[3];
+        fieldGame[6][0] = new CityCell("Ка", 1, GameM.BRIGHT_RED_BACKGROUND, 0, 100, 100, null, fieldGame[6][1],Poland, 160, 12, 60, 180, 500, 700, 900);
+        fieldGame[7][0] = new CityCell("Оп", 1, GameM.BRIGHT_RED_BACKGROUND, 0, 100, 100, null, fieldGame[7][1],Poland, 140, 10, 50, 150, 450, 625, 750);
+        fieldGame[9][0] = new CityCell("Вр", 1, GameM.BRIGHT_RED_BACKGROUND, 0, 100, 100, null, fieldGame[9][1],Poland, 140, 10, 50, 150, 450, 625, 750);
+        Poland[0] = fieldGame[6][0];
+        Poland[1] = fieldGame[7][0];
+        Poland[2] = fieldGame[9][0];
+
+        France = new CityCell[3];
+        fieldGame[10][1] = new CityCell("На", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][1],France, 120, 8, 40, 100, 300, 450, 600);
+        fieldGame[10][2] = new CityCell("Пр", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][2],France, 100, 6, 30, 90, 270, 400, 550);
+        fieldGame[10][4] = new CityCell("Лн", 0, GameM.YELLOW_BACKGROUND, 0, 50, 50, null, fieldGame[9][4],France, 100, 6, 30, 90, 270, 400, 550);
+        France[0] = fieldGame[10][1];
+        France[1] = fieldGame[10][2];
+        France[2] = fieldGame[10][4];
+
+        England = new CityCell[2];
+        fieldGame[10][7] = new CityCell("Мн", 0, GameM.CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][7],England, 60, 4, 20, 60, 180, 320, 450);
+        fieldGame[10][9] = new CityCell("Лд", 0, CYAN_BACKGROUND, 0, 50, 50, null, fieldGame[9][9],England, 60, 2, 10, 30, 90, 160, 250);
+        England[0] = fieldGame[10][7];
+        England[1] = fieldGame[10][9];
         //---------------------------------------------Заповнення клітинок шансів - ВОВА  ---------------------------------------------------------------------
         Chance[] chances = new Chance[13];
         chances[0] = (player) -> {
@@ -214,38 +247,8 @@ public class GameM implements Serializable, CONSTANTS {
         //---------------------------------------------Заповнення клітинок старту і безплатної стоянки - ОЛЕНА ---------------------------------------------------------------------
 
         //---------------------------------------------Заповнення країн містами - ПЕРЕНЕСТИ ДО МІСТ - ОЛЕНА ---------------------------------------------------------------------
-        Netherlands = new CityCell[3];
-        Netherlands[0] = fieldGame[0][6];
-        Netherlands[1] = fieldGame[0][7];
-        Netherlands[2] = fieldGame[0][9];
 
-        Norway = new CityCell[3];
-        Norway[0] = fieldGame[1][10];
-        Norway[1] = fieldGame[2][10];
-        Norway[2] = fieldGame[4][10];
 
-        Ukraine = new CityCell[2];
-        Ukraine[0] = fieldGame[7][10];
-        Ukraine[1] = fieldGame[9][10];
-
-        Czech = new CityCell[3];
-        Czech[0] = fieldGame[1][0];
-        Czech[1] = fieldGame[2][0];
-        Czech[2] = fieldGame[4][0];
-
-        Poland = new CityCell[3];
-        Poland[0] = fieldGame[6][0];
-        Poland[1] = fieldGame[7][0];
-        Poland[2] = fieldGame[9][0];
-
-        France = new CityCell[3];
-        France[0] = fieldGame[10][1];
-        France[1] = fieldGame[10][2];
-        France[2] = fieldGame[10][4];
-
-        England = new CityCell[2];
-        England[0] = fieldGame[10][7];
-        England[1] = fieldGame[10][9];
         //---------------------------------------------Заповнення roadGame і номерів клітинок - ОЛЕНА ---------------------------------------------------------------------
         roadGame = new Cell[40];
         int numbrOnRoad = 0;
