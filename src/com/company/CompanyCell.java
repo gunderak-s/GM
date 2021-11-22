@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 
-public class CompanyCell extends Cell{
+public class CompanyCell extends Cell implements  CONSTANTS{
     //################################################  ОЛЕНА  ##################################################################################################
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     int statusRenta;
@@ -19,7 +19,7 @@ public class CompanyCell extends Cell{
         this.holder = holder;
         this.company=company;
         this.rentaMas = rentaMas;
-        drawTextIntoCell(String.valueOf(rentaMas[2]), 3, false);
+        drawTextIntoCell(String.valueOf(rentaMas[0]), 3, false);
 
     }
     //################################################  ОЛЕНА  ##################################################################################################
@@ -81,16 +81,21 @@ public class CompanyCell extends Cell{
                 text = text + " ";
         String[] textInMas = text.split("");
         switch (rotation) {
-            case 1:
-                for (int i = 0; i < CONSTANTS.SIZE_CELLS; i++){
-                    cell.cellsMatrix[row][0] = " ";
-                }
+            case 0:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[row][i] = textInMas[i];
+                break;
+            case 1:
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                    cell.cellsMatrix[i][SIZE_CELLS-1-row] = textInMas[i];
                 break;
             case 2:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                    cell.cellsMatrix[SIZE_CELLS-1-row][i] = textInMas[i];
+                break;
+            case 3:
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                    cell.cellsMatrix[i][row] = textInMas[i];
                 break;
         }
     }

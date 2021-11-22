@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.Serializable;
 
-public class PortCell extends Cell{
+public class PortCell extends Cell implements CONSTANTS{
     //#################################################  ОЛЕНА  #################################################################################################
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     int statusRenta;
@@ -18,7 +18,7 @@ public class PortCell extends Cell{
         this.helpful = helpful;
         this.port=port;
         this.rentaMas = rentaMas;
-        drawTextIntoCell(String.valueOf(rentaMas[5]), 3, false);
+        drawTextIntoCell(String.valueOf(rentaMas[0]), 3, false);
     }
     //#################################################  ОЛЕНА  #################################################################################################
     boolean playerFromCell(Player player){
@@ -97,23 +97,20 @@ public class PortCell extends Cell{
         String[] textInMas = text.split("");
         switch (rotation) {
             case 0:
-                for (int i = 0; i < CONSTANTS.SIZE_CELLS; i++){
-                    cell.cellsMatrix[row][0] = " ";
-                }
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                    cell.cellsMatrix[row][i] = textInMas[i];
                 break;
             case 1:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[i][SIZE_CELLS-1-row] = textInMas[i];
                 break;
             case 2:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                    cell.cellsMatrix[SIZE_CELLS-1-row][i] = textInMas[i];
                 break;
             case 3:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[i][row] = textInMas[i];
                 break;
         }
     }
