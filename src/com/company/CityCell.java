@@ -22,67 +22,104 @@ public class CityCell extends Cell{
         this.helpful = helpful;
         this.country=country;
         this.rentaMas = rentaMas;
-            String[] n = name.split("");
+        drawTextIntoCell(String.valueOf(rentaMas[7]), 3, false);
+        drawTextIntoCell(name, 1, false);
     }
     //#############################################  ОЛЕНА  #####################################################################################################
     boolean playerFromCell(Player player){
+
         redrawSymbolPlayer(player.symbol," ");
         return true;
     }
     //#############################################  ОЛЕНА  #####################################################################################################
     void playerIntoCell(Player player){
+        if (statusRenta!=0) {
+            player.money-= rentaMas[statusRenta];
+            holder.money+= rentaMas[statusRenta];
+        }
         redrawSymbolPlayer(" ",player.symbol);
     }
     //#############################################  ОЛЕНА  #####################################################################################################
     void redrawSymbolPlayer(String prevChar, String newChar){
-        for (int i=0;i<4;i++)
-            for (int j=0;j<4;j++)
-                if (cellsMatrix[i][j].equals(prevChar)) {
-                    cellsMatrix[i][j] = newChar;
-                    return;
-                }
+       switch (rotation) {
+           case 0:
+               for (int i=0; i<4; i++)
+                   if (cellsMatrix[2][i].equals(prevChar)) {
+                       cellsMatrix[2][i]=newChar;
+                       return;
+       }
+           case 1:
+               for (int i=0; i<4; i++)
+                   if (cellsMatrix[i][1].equals(prevChar)) {
+                       cellsMatrix[i][1] = newChar;
+                       return;
+                   }
+           case 2:
+               for (int i=0; i<4; i++)
+                   if (cellsMatrix[1][i].equals(prevChar)) {
+                       cellsMatrix[1][i] = newChar;
+                       return;
+                   }
+           case 3:
+               for (int i=0; i<4; i++)
+                   if (cellsMatrix[i][2].equals(prevChar)) {
+                       cellsMatrix[i][2] = newChar;
+                       return;
+                   }
+       }
     }
     //############################################  МІША  ######################################################################################################
     void purchase(Player player, int numberCell){
     }
     //############################################  ОЛЕНА  ######################################################################################################
-    void  setHolder(Player player){
-
+    void  setHolder(Player holder){
+      this.holder=holder;
+      holder.ownership.add(this);
+      switch (rotation) {
+          case 0:
+              cellsMatrix[1][3] = holder.symbol;;
+              break;
+          case 1:
+              cellsMatrix[3][2] = holder.symbol;
+              break;
+          case 2:
+              cellsMatrix[2][3] = holder.symbol;
+              break;
+          case 3:
+              cellsMatrix[3][1] = holder.symbol;
+              break;
+      }
     }
     //############################################  ОЛЕНА  ######################################################################################################
     void drawTextIntoCell(String text,int row, boolean helpful){
-        int price =rentaMas[statusRenta];
-        String s=String.valueOf(price);
-        String[] masS=s.split("");
-        //int lengthMas=masC.length;
-
+        Cell cell;
+        if (helpful)
+            cell = this.helpful;
+        else
+            cell = this;
+        if (text.length()<4)
+            for (int i=0; i<CONSTANTS.SIZE_CELLS-text.length(); i++)
+                text = text + " ";
+        String[] textInMas = text.split("");
         switch (rotation) {
             case 0:
-                for (int i = 0; i < 4; i++){
-                    cellsMatrix[3][i] = masS[i];
-                return;
+                for (int i = 0; i < CONSTANTS.SIZE_CELLS; i++){
+                    cell.cellsMatrix[row][0] = " ";
                 }
+                    for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                        cell.cellsMatrix[row][i] = textInMas[textInMas.length];
                 break;
-
             case 1:
-                for (int j = 0; j < 4; j++){
-                    cellsMatrix[j][0] = masS[j];
-                return;
-                }
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
                 break;
-
             case 2:
-                for (int i = 0; i < 4; i++){
-                    cellsMatrix[0][i] = masC.toString();
-                return;
-                }
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
                 break;
-
             case 3:
-                for (int j = 0; j < 4; j++){
-                    cellsMatrix[j][3] = masC.toString();
-                return;
-                }
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
                 break;
         }
     }
