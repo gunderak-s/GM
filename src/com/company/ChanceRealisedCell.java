@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ChanceRealisedCell extends Cell{
-    //#####################################################  ВОВА  #############################################################################################
+public class ChanceRealisedCell extends Cell implements CONSTANTS{
+    //##################################################################################################################################################
     private int count;
     private Chance[] chance;
     private ArrayList<Integer> random=new ArrayList();
@@ -20,30 +20,17 @@ public class ChanceRealisedCell extends Cell{
                random.add(a);}
        }
     }
-    //#####################################################  ВОВА  #############################################################################################
+    //##################################################################################################################################################
     boolean playerFromCell(Player player){
         redrawSymbolPlayer(player.symbol," ");
         return true;
     }
-    //#####################################################  ВОВА  #############################################################################################
+    //##################################################################################################################################################
     public void playerIntoCell(Player player){
         redrawSymbolPlayer(" ",player.symbol);
         chance[random.get(count)].chance(player);
         count++;
         if (count==13)count=0;
-    }
-    //#####################################################  ВОВА  #############################################################################################
-    void redrawSymbolPlayer(String prevChar, String newChar){
-        for (int i=0;i<4;i++)
-            for (int j=0;j<4;j++)
-                if (cellsMatrix[i][j].equals(prevChar)) {
-                    cellsMatrix[i][j] = newChar;
-                    return;
-                }
-    }
-    //#####################################################  ОЛЕНА  #############################################################################################
-    void drawTextIntoCell(String text,int row, boolean helpful){
-
     }
     //##################################################################################################################################################
     public void printRow(int row){
