@@ -160,22 +160,6 @@ public class CityCell extends Cell implements CONSTANTS{
         }
     }
 
-    public int countPriceCityCell(){
-        int a = 0;
-        if (statusRenta<5){
-            a=statusRenta*priceHouse;
-        }else if(statusRenta>5){
-            a=5*priceHouse+(statusRenta-5)*priceHouse;
-        }
-        return rentaMas[0] + a;
-
-
-
-        /* з приводу податків
-         * створити з податкома (клітинка) в таксСел зробити обєкт шанс роеализувати його в ГемеМ так як роив з шанс, і зробити так
-         * щоб він побив по карточкам, одну вираховував податок від власності, а в другій так як сказано в карточці, просто зняти гроші*/
-    }
-
     //##################################################  АНДРІЙ  ################################################################################################
     public void printInfo() {
 
