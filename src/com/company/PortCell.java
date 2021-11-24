@@ -10,15 +10,17 @@ public class PortCell extends Cell{
     Player holder;
     Cell helpful;
     PortCell[] port;
+    String[][] cellMatrix;
     //#################################################  ОЛЕНА  #################################################################################################
-    public PortCell(int rotation, int statusRenta,  Cell helpful , Player holder, PortCell[] port, int... rentaMas) {
+    public PortCell(String[][] cellsMatrix, int rotation, int statusRenta,  Cell helpful , Player holder, PortCell[] port, int... rentaMas) {
+       this.cellMatrix = cellsMatrix;
         this.rotation = rotation;
         this.statusRenta = statusRenta;
         this.holder = holder;
         this.helpful = helpful;
         this.port=port;
         this.rentaMas = rentaMas;
-        drawTextIntoCell(String.valueOf(rentaMas[5]), 3, false);
+        drawTextIntoCell(String.valueOf(rentaMas[0]), 3, false);
     }
     //#################################################  ОЛЕНА  #################################################################################################
     boolean playerFromCell(Player player){
@@ -101,19 +103,19 @@ public class PortCell extends Cell{
                     cell.cellsMatrix[row][0] = " ";
                 }
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                    cell.cellsMatrix[row][i] = textInMas[i];
                 break;
             case 1:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[i][CONSTANTS.SIZE_CELLS-1-row] = textInMas[i];
                 break;
             case 2:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                    cell.cellsMatrix[CONSTANTS.SIZE_CELLS-1-row][i] = textInMas[i];
                 break;
             case 3:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[i][row] = textInMas[i];
                 break;
         }
     }
@@ -123,33 +125,7 @@ public class PortCell extends Cell{
     }
     //##################################################################################################################################################
     public void printRow(int row){
-        switch (rotation) {
-            case 0:
-                switch (row) {
-                    case 0:
-                        System.out.print(cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
-                        break;
-                    default:
-                        System.out.print(cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
-                }
-                break;
-            case 1:
-                System.out.print(cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
-                break;
-
-            case 2:
-                switch (row) {
-                    case 3:
-                        System.out.print(cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
-                        break;
-                    default:
-                        System.out.print( cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
-                }
-                break;
-            case 3:
-                System.out.print(cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
-                break;
-        }
+        System.out.print(cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
     }
     //##################################################  АНДРІЙ  ################################################################################################
     public void printInfo() {

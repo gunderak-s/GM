@@ -232,7 +232,18 @@ public class GameM implements Serializable, CONSTANTS {
         //---------------------------------------------Заповнення клітинок податків - ВОВА ---------------------------------------------------------------------
 
         //---------------------------------------------Заповнення клітинок поліції і тюрми - МІША ---------------------------------------------------------------------
-
+       PoliceCell[] police = new PoliceCell[1];
+        fieldGame[0][10]=new PoliceCell(new String[][]{
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " "," "}});
+        PrisonCell[] prinston = new PrisonCell[1];
+        fieldGame[10][0]=new PrisonCell(new String[][]{
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " "," "}}, null, null);
         //---------------------------------------------Заповнення клітинок компаній - ОЛЕНА ---------------------------------------------------------------------
         CompanyCell[] company = new CompanyCell[2];
         fieldGame[8][0]= new CompanyCell(new String[][]{
@@ -244,15 +255,34 @@ public class GameM implements Serializable, CONSTANTS {
         fieldGame[0][8]=new CompanyCell(new String[][]{
                 {" ", " ", " ", " "},
                 {" ", " ", " ", " "},
-                {" ", "~", "~", " "},
+                {" ", "^", "^", " "},
                 {" ", " ", " ", " "}
         }, 1, 0,fieldGame[1][8],null,company,150);
         //---------------------------------------------Заповнення клітинок портів - ОЛЕНА ---------------------------------------------------------------------
         PortCell[] ports = new PortCell[4];
-        fieldGame[10][5] = new PortCell(0, 0,fieldGame[9][5],null, ports,200,25,100,200);
-        fieldGame[5][0] = new PortCell(1,0, fieldGame[5][1],null, ports, 200,25,50,100,200);
-        fieldGame[0][5] = new PortCell(2,0, fieldGame[1][5],null, ports, 200,25,50,100,200);
-        fieldGame[5][10] = new PortCell(3,0, fieldGame[5][9],null, ports, 200,25,50,100,200);
+        fieldGame[10][5] = new PortCell(new String[][]{
+                {"З", "Х", "~", "~"},
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "}
+        },0, 0,fieldGame[9][5],null, ports,200,25,100,200);
+        fieldGame[5][0] = new PortCell(new String[][]{
+                {" ", " ", " ", "П"},
+                {" ", " ", " ", "В"},
+                {" ", " ", " ", "~"},
+                {" ", " ", " ", "~"}
+        },1,0, fieldGame[5][1],null, ports, 200,25,50,100,200);
+        fieldGame[0][5] = new PortCell(new String[][]{
+                {"С", "Х", "~", "~"},
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "}}, 2,0, fieldGame[1][5],null, ports, 200,25,50,100,200);
+        fieldGame[5][10] = new PortCell(new String[][]{
+                {" ", " ", " ", "П"},
+                {" ", " ", " ", "Д"},
+                {" ", " ", " ", "~"},
+                {" ", " ", " ", "~"}
+        },3,0, fieldGame[5][9],null, ports, 200,25,50,100,200);
         ports[0] = (PortCell) fieldGame[10][5];
         ports[1] = (PortCell) fieldGame[5][0];
         ports[2] = (PortCell) fieldGame[0][5];
@@ -286,12 +316,12 @@ public class GameM implements Serializable, CONSTANTS {
             roadGame[numbrOnRoad].drawTextIntoCell(String.valueOf(numbrOnRoad),3,true);
             numbrOnRoad++;
         }
-        for (int i = 10; i >= 1; i--) {
+        for (int i = 1; i <= 10; i++) {
             roadGame[numbrOnRoad] = fieldGame[0][i];
             roadGame[numbrOnRoad].drawTextIntoCell(String.valueOf(numbrOnRoad),3,true);
             numbrOnRoad++;
         }
-        for (int j = 9; j >= 1; j--){
+        for (int j = 1; j <= 9; j++){
             roadGame[numbrOnRoad] = fieldGame[j][10];
             roadGame[numbrOnRoad].drawTextIntoCell(String.valueOf(numbrOnRoad),3,true);
             numbrOnRoad++;

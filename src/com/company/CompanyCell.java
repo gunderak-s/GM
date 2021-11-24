@@ -81,16 +81,24 @@ public class CompanyCell extends Cell{
                 text = text + " ";
         String[] textInMas = text.split("");
         switch (rotation) {
-            case 1:
+            case 0:
                 for (int i = 0; i < CONSTANTS.SIZE_CELLS; i++){
                     cell.cellsMatrix[row][0] = " ";
                 }
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[row][i] = textInMas[i];
+                break;
+            case 1:
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                    cell.cellsMatrix[i][CONSTANTS.SIZE_CELLS-1-row] = textInMas[i];
                 break;
             case 2:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                    cell.cellsMatrix[CONSTANTS.SIZE_CELLS-1-row][i] = textInMas[i];
+                break;
+            case 3:
+                for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
+                    cell.cellsMatrix[i][row] = textInMas[i];
                 break;
         }
     }
@@ -100,16 +108,7 @@ public class CompanyCell extends Cell{
     }
     //##################################################################################################################################################
     public void printRow(int row) {
-        switch (rotation) {
-
-            case 1:
                 System.out.print(cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
-                break;
-
-            case 3:
-                System.out.print( cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
-                break;
-        }
     }
     //##############################################  АНДРІЙ  ####################################################################################################
     public void printInfo() {

@@ -107,19 +107,19 @@ public class CityCell extends Cell{
                     cell.cellsMatrix[row][0] = " ";
                 }
                     for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                        cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                        cell.cellsMatrix[row][i] = textInMas[i];
                 break;
             case 1:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[i][CONSTANTS.SIZE_CELLS-1-row] = textInMas[i];
                 break;
             case 2:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[row][i] = textInMas[textInMas.length];
+                    cell.cellsMatrix[CONSTANTS.SIZE_CELLS-1-row][i] = textInMas[i];
                 break;
             case 3:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][row] = textInMas[textInMas.length];
+                    cell.cellsMatrix[i][row] = textInMas[i];
                 break;
         }
     }

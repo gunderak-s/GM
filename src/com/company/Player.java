@@ -35,15 +35,14 @@ public class Player implements Serializable, Print {
     }
     //###################################################  ВОВА  ###############################################################################################
     void move(int lengthRoad){
-        roadGame[player.positionOnRoad].redrawSymbolPlayer(player.symbol, " ");
-        for (int i = 0; i < cube; i++) {
-            if (player.positionOnRoad != 40) {
-                player.positionOnRoad++;
+        roadGame[positionOnRoad].redrawSymbolPlayer(symbol, " ");
+        for (int i = 0; i < cube1+cube2; i++) {
+            if (positionOnRoad != 40) {
+                positionOnRoad++;
             } else {
-                player.positionOnRoad = 0;
+                positionOnRoad = 0;
             }
         }
-        roadGame[player.positionOnRoad].action(player);
     }
     //###################################################  АНДРІЙ  ###############################################################################################
     public void printRow(int row) {
