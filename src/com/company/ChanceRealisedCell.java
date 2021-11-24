@@ -5,10 +5,10 @@ import java.util.Random;
 
 public class ChanceRealisedCell extends Cell {
     private int count;
-    private Chance[] chance;
+    private CardActivity[] chance;
     private ArrayList<Integer> random=new ArrayList();
 
-    public ChanceRealisedCell(Chance []chance) {
+    public ChanceRealisedCell(CardActivity[] chance) {
         this.chance = chance;
         count=0;
        random.add(new Random().nextInt(13)+1);
