@@ -1,7 +1,7 @@
 package com.company;
 
-@FunctionalInterface
-public interface CardActivity {
+public interface Print {
     //##################################################################################################################################################
-    void chance(Player player);
+    void  printRow(int row);
+    void  printInfo();
 }

@@ -2,7 +2,8 @@ package com.company;
 
 import java.io.Serializable;
 
-public class Cell implements Serializable {
+public class Cell implements Serializable, Print {
+    //##################################################################################################################################################
     String[][] cellsMatrix;
     //##################################################################################################################################################
     Cell() {
@@ -13,6 +14,7 @@ public class Cell implements Serializable {
                 {" ", " ", " ", " "}
         };
     }
+    //##################################################################################################################################################
     Cell(String [][] cellsMatrix) {
         this.cellsMatrix=cellsMatrix;
     }
@@ -50,7 +52,7 @@ public class Cell implements Serializable {
         return  0;
     }
     //##################################################################################################################################################
-    void printMatrix(int row){
+    public void printRow(int row){
         System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
     }
     //##################################################################################################################################################

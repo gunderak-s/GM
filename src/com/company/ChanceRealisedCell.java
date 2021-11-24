@@ -1,9 +1,11 @@
 package com.company;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class ChanceRealisedCell extends Cell {
+public class ChanceRealisedCell extends Cell implements CONSTANTS{
+    //##################################################################################################################################################
     private int count;
     private CardActivity[] chance;
     private ArrayList<Integer> random=new ArrayList();
@@ -18,10 +20,20 @@ public class ChanceRealisedCell extends Cell {
                random.add(a);}
        }
     }
-    public void action(Player player){
+    //##################################################################################################################################################
+    boolean playerFromCell(Player player){
+        redrawSymbolPlayer(player.symbol," ");
+        return true;
+    }
+    //##################################################################################################################################################
+    public void playerIntoCell(Player player){
         redrawSymbolPlayer(" ",player.symbol);
         chance[random.get(count)].chance(player);
         count++;
         if (count==13)count=0;
+    }
+    //##################################################################################################################################################
+    public void printRow(int row){
+        System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
     }
 }
