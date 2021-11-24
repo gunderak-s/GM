@@ -1,6 +1,6 @@
 package com.company;
 
-public class CityCell extends Cell{
+public class CityCell extends Cell implements CONSTANTS{
     //##################################################################################################################################################
     int rotation;   // 0-знизу, 1-зліва, 2-згори, 3-справа
     String color;
@@ -11,7 +11,7 @@ public class CityCell extends Cell{
     Player holder;
     Cell helpful;
     CityCell[] country;
-    //############################################  ОЛЕНА  ######################################################################################################
+    //##################################################################################################################################################
     CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful,CityCell[] country, int ... rentaMas) {
         this.rotation = rotation;
         this.color = color;
@@ -22,16 +22,15 @@ public class CityCell extends Cell{
         this.helpful = helpful;
         this.country=country;
         this.rentaMas = rentaMas;
-        drawTextIntoCell(String.valueOf(rentaMas[7]), 3, false);
+        drawTextIntoCell(String.valueOf(rentaMas[0]), 3, false);
         drawTextIntoCell(name, 1, false);
     }
-    //#############################################  ОЛЕНА  #####################################################################################################
+    //##################################################################################################################################################
     boolean playerFromCell(Player player){
-
         redrawSymbolPlayer(player.symbol," ");
         return true;
     }
-    //#############################################  ОЛЕНА  #####################################################################################################
+    //##################################################################################################################################################
     void playerIntoCell(Player player){
         if (statusRenta!=0) {
             player.money-= rentaMas[statusRenta];
@@ -39,7 +38,7 @@ public class CityCell extends Cell{
         }
         redrawSymbolPlayer(" ",player.symbol);
     }
-    //#############################################  ОЛЕНА  #####################################################################################################
+    //##################################################################################################################################################
     void redrawSymbolPlayer(String prevChar, String newChar){
        switch (rotation) {
            case 0:
@@ -71,7 +70,7 @@ public class CityCell extends Cell{
     //############################################  МІША  ######################################################################################################
     void purchase(Player player, int numberCell){
     }
-    //############################################  ОЛЕНА  ######################################################################################################
+    //##################################################################################################################################################
     void  setHolder(Player holder){
       this.holder=holder;
       holder.ownership.add(this);
@@ -90,7 +89,7 @@ public class CityCell extends Cell{
               break;
       }
     }
-    //############################################  ОЛЕНА  ######################################################################################################
+    //##################################################################################################################################################
     void drawTextIntoCell(String text,int row, boolean helpful){
         Cell cell;
         if (helpful)
@@ -103,19 +102,16 @@ public class CityCell extends Cell{
         String[] textInMas = text.split("");
         switch (rotation) {
             case 0:
-                for (int i = 0; i < CONSTANTS.SIZE_CELLS; i++){
-                    cell.cellsMatrix[row][0] = " ";
-                }
                     for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
                         cell.cellsMatrix[row][i] = textInMas[i];
                 break;
             case 1:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[i][CONSTANTS.SIZE_CELLS-1-row] = textInMas[i];
+                    cell.cellsMatrix[i][SIZE_CELLS-1-row] = textInMas[i];
                 break;
             case 2:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
-                    cell.cellsMatrix[CONSTANTS.SIZE_CELLS-1-row][i] = textInMas[i];
+                    cell.cellsMatrix[SIZE_CELLS-1-row][i] = textInMas[i];
                 break;
             case 3:
                 for (int i=0; (i<CONSTANTS.SIZE_CELLS)&(i<text.length()); i++)
