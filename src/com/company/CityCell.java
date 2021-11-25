@@ -12,7 +12,7 @@ public class CityCell extends Cell implements CONSTANTS{
     Cell helpful;
     CityCell[] country;
     //##################################################################################################################################################
-    CityCell(String name, int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful,CityCell[] country, int ... rentaMas) {
+    CityCell(int rotation,  String color, int statusRenta, int priceHouse , int priceHotel, Player holder,Cell helpful,CityCell[] country, int ... rentaMas) {
         this.rotation = rotation;
         this.color = color;
         this.statusRenta = statusRenta;
@@ -23,7 +23,7 @@ public class CityCell extends Cell implements CONSTANTS{
         this.country=country;
         this.rentaMas = rentaMas;
         drawTextIntoCell(String.valueOf(rentaMas[0]), 3, false);
-        drawTextIntoCell(name, 1, false);
+        // drawTextIntoCell(name, 1, false);
     }
     //##################################################################################################################################################
     boolean playerFromCell(Player player){

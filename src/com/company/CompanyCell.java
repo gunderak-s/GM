@@ -87,16 +87,7 @@ public class CompanyCell extends Cell implements  CONSTANTS{
     }
     //##################################################################################################################################################
     public void printRow(int row) {
-        switch (rotation) {
-
-            case 1:
                 System.out.print(cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
-                break;
-
-            case 3:
-                System.out.print( cellsMatrix[row][0] + cellsMatrix[row][1] + cellsMatrix[row][2] + cellsMatrix[row][3]);
-                break;
-        }
     }
     //##############################################  АНДРІЙ  ####################################################################################################
     public void printInfo() {

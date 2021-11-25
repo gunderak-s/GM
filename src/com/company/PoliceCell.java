@@ -3,9 +3,12 @@ package com.company;
 
 public class PoliceCell extends Cell{
     //#####################################################  ОЛЕНА  #############################################################################################
-
+    String[][] cellMatrix;
+    PrisonCell prison;
     //#####################################################  ОЛЕНА  #############################################################################################
-    public PoliceCell() {
+    public PoliceCell(PrisonCell prison, String[][] cellMatrix) {
+     this.cellMatrix = cellMatrix;
+     this.prison=prison ;
 
     }
     //##################################################################################################################################################
@@ -13,9 +16,18 @@ public class PoliceCell extends Cell{
         redrawSymbolPlayer(player.symbol," ");
         return true;
     }
+    //#####################################################  МІША  #############################################################################################
+    void redrawSymbolPlayer(String prevChar, String newChar){
+        for (int i=0;i<4;i++)
+            for (int j=0;j<4;j++)
+                if (cellsMatrix[i][j].equals(prevChar)) {
+                    cellsMatrix[i][j] = newChar;
+                    return;
+                }
+    }
     //#####################################################  ОЛЕНА  #############################################################################################
     public void playerIntoCell(Player player){
-
+        prison.arest(player);
     }
     //##################################################################################################################################################
     public void printRow(int row){
