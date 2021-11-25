@@ -245,18 +245,19 @@ public class GameM implements Serializable, CONSTANTS {
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
 
         //---------------------------------------------Заповнення клітинок поліції і тюрми - МІША ---------------------------------------------------------------------
-       PoliceCell[] police = new PoliceCell[1];
-        fieldGame[0][10]=new PoliceCell( (PrisonCell) fieldGame[10][0], new String[][]{
-                {" ", " ", " ", " "},
-                {" ", " ", " ", " "},
-                {" ", " ", " ", " "},
-                {" ", " ", " "," "}});
         PrisonCell[] prison = new PrisonCell[1];
         fieldGame[10][0]=new PrisonCell(new String[][]{
                 {" ", "#", "+", "+"},
                 {" ", "#", "+", "+"},
                 {" ", "#", "#", "#"},
                 {" ", " ", " "," "}}, 10, null, null);
+        PoliceCell[] police = new PoliceCell[1];
+        fieldGame[0][10]=new PoliceCell( (PrisonCell) fieldGame[10][0], new String[][]{
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " ", " "},
+                {" ", " ", " "," "}});
+
         //---------------------------------------------Заповнення клітинок компаній - ОЛЕНА ---------------------------------------------------------------------
         CompanyCell[] company = new CompanyCell[2];
         fieldGame[8][0]= new CompanyCell(new String[][]{
