@@ -2,7 +2,15 @@ package com.company;
 
 public class TaxCell extends  Cell{
     //#################################################  ВОВА  #################################################################################################
+    private CardActivity tax;
 
+    public TaxCell(CardActivity tax) {
+        this.tax = tax;
+    }
+
+    public CardActivity getTax() {
+        return tax;
+    }
     //#################################################  ВОВА  #################################################################################################
     public TaxCell() {
 
@@ -29,5 +37,7 @@ public class TaxCell extends  Cell{
     public void printRow(int row){
         System.out.print(GameM.WHITE_BACKGROUND+cellsMatrix[row][0]+cellsMatrix[row][1]+cellsMatrix[row][2]+cellsMatrix[row][3]);
     }
+
+
 
 }

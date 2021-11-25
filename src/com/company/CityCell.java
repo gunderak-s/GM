@@ -122,7 +122,13 @@ public class CityCell extends Cell implements CONSTANTS{
     }
     //###############################################  ВОВА  ###################################################################################################
     float getPrice(){
-        return  0;
+        int a = 0;
+        if (statusRenta<5){
+            a=statusRenta*priceHouse;
+        }else if(statusRenta>5){
+            a=5*priceHouse+(statusRenta-5)*priceHouse;
+        }
+        return rentaMas[0] + a;
     }
     //##################################################################################################################################################
     public void printRow(int row){

@@ -1,7 +1,7 @@
 package com.company;
 
 @FunctionalInterface
-public interface Chance {
+public interface CardActivity {
     //##################################################################################################################################################
     void chance(Player player);
 }

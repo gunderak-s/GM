@@ -55,4 +55,9 @@ public class Player implements Serializable, Print {
     public void printInfo() {
 
     }
+
+    public String getBleakSymbol(){
+        symbol=symbol;
+        return symbol;
+    }
 }
