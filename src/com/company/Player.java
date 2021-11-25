@@ -3,7 +3,7 @@ package com.company;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Player implements Serializable, Print {
+public class Player implements Serializable, Print ,CONSTANTS{
     //###################################################  ВОВА  ###############################################################################################
     int awayFromPrisonCell;
     String name;
@@ -57,7 +57,7 @@ public class Player implements Serializable, Print {
     }
 
     public String getBleakSymbol(){
-        symbol=symbol;
+        symbol=BLACK+symbol+BRIGHT_WHITE;
         return symbol;
     }
 }
