@@ -22,23 +22,23 @@ public class GameM implements Serializable, CONSTANTS {
     //###########################################################  АНДРІЙ  #############################################################################
     void game(boolean newGame) {
         //---------------------------------------------------Ініціалізація значень і запуск цикла-------------------------------------------------------
-        if (newGame) {
+        if (newGame){
             setField();
             setPlayers();
+            for (int i=0;i< players.size();i++)
+                roadGame[0].redrawSymbolPlayer(" ",players.get(i).symbol);
         }
-        int cube1;
-        int cube2;
         int selectedNumber;
         int numberOnRoad = 0;
         Scanner scanner = new Scanner(System.in);
-        for (int i = 0; i < players.size(); i++)
-            roadGame[0].redrawSymbolPlayer(" ", players.get(i).symbol);
         while (players.size() > 1) {
             printField();
-            //-------------------------------ДОДАТИ В ДІАЛОЗІ ГРАВЦЯМ МОЖЛИВІСТЬ ПОДИВИТИСЯ ІНФОРМАЦІЮ ПРО КЛІТИНКУ--------------------------------------
-            System.out.print("Натисніть 0, щоб" + players.get(turn).name + "кинув кубики, або ");
+            //--------------------------------------------------Діалог----------------------------------------------------------------------------------
+            System.out.println("Натисніть 0, щоб " + players.get(turn).name + " кинув кубики, або ");
             for (int i = 0; i < players.size(); i++)
-                System.out.print((i + 1) + "- щоб" + players.get(i).name + "зайшов в банк, ");
+                System.out.print((i + 1) + "- щоб " + players.get(i).name + " зайшов в банк, ");
+            System.out.print("Натисніть 5, щоб вийти з гри");
+            System.out.println();
             if (scanner.hasNextInt()) {
                 selectedNumber = scanner.nextInt();
                 switch (selectedNumber) {
@@ -48,8 +48,10 @@ public class GameM implements Serializable, CONSTANTS {
                         System.out.println(players.get(selectedNumber - 1).name + " яку клітинку хочете купити? Введіть її номер на дорозі гри");
                         if (scanner.hasNextInt())
                             numberOnRoad = scanner.nextInt();
-                        roadGame[numberOnRoad].purchase(players.get(selectedNumber),numberOnRoad);
+                        roadGame[numberOnRoad].purchase(players.get(selectedNumber-1), numberOnRoad);
                         continue;
+                    case 5:
+                        return;
                     default:
                         System.out.print("Некоректне значення");
                         continue;
@@ -61,14 +63,15 @@ public class GameM implements Serializable, CONSTANTS {
                 players.get(turn).move(roadGame.length);
                 roadGame[players.get(turn).positionOnRoad].playerIntoCell(players.get(turn));
             }
+
             //--------------------------------------------------Видалення поточного гравця, якщо став банкротом---------------------------------------------
-            if (players.get(turn).money < 0) {
+            if (players.get(turn).money<0) {
                 System.out.println("Ви стали банкротом" + players.get(turn).name);
                 players.remove(turn);
             }
-            if (players.get(turn).identicalCubes())
-                System.out.println("Киньте кубики ще раз" + players.get(turn).name);
-                //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
+            //--------------------------------------------------Передача ходу-------------------------------------------------------------------------------
+            if(players.get(turn).identicalCubes())
+                System.out.println("Киньте кубики ще раз"+players.get(turn).name);
             else {
                 turn++;
                 if (turn > players.size() - 1)
@@ -76,6 +79,7 @@ public class GameM implements Serializable, CONSTANTS {
             }
         }
         //--------------------------------------------------Після циклу - оголошення переможця----------------------------------------------------------
+
         System.out.println("Вітаємо з перемогою" + players.get(turn).name + "!");
     }
     //################################################################  МІША  ##################################################################################
