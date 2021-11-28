@@ -231,16 +231,14 @@ public class GameM implements Serializable, CONSTANTS {
         };
         ChanceRealisedCell chanceRealisedCell = new ChanceRealisedCell(chance);
 
-        CardActivity tax = (player) -> {
-            if (player.ownership.size() == 0) {player.money = player.money - 200;
-            }else
-            {
+        CardActivity tax = player -> {
+            if (player.ownership.size() == 0)
+            {player.money = player.money - 200; }
+            else {
                 for (Cell cell : player.ownership) {
-                    player.money = player.money - (int) ((cell.getPrice()) * 0.1);
-
-                }
-            }
+                    player.money = player.money - (int) ((cell.getPrice()) * 0.1); } }
         };
+        /*CardActivity notify = Object::notify; - цікаво що ця штука робить, покищо виглядає так ніби вона повністю заміняє лямду*/
         TaxCell taxCell=new TaxCell(tax);
         //---------------------------------------------Заповнення країн містами---------------------------------------------------------------------
 
